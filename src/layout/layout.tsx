@@ -1,14 +1,11 @@
 import React from 'react';
 import {StatusBar, Text} from 'react-native';
 import {CustomFonts} from '../theme/fonts';
-import {LayoutStyles} from "./styles";
+import {LayoutStyles} from './styles';
 
 export class Layout extends React.Component {
-
   render() {
-    let {
-      SafeAreaView
-    } = LayoutStyles
+    let {SafeAreaView} = LayoutStyles;
 
     return (
       <>
