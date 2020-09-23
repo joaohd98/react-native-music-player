@@ -25,6 +25,7 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import {CustomFonts} from "./src/theme/fonts";
 
 declare const global: {HermesInternal: null | {}};
 
@@ -95,6 +96,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '600',
     color: Colors.black,
+    fontFamily: CustomFonts.circularStdBook
   },
   sectionDescription: {
     marginTop: 8,
