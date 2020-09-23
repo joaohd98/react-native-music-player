@@ -2,7 +2,7 @@ import React from 'react';
 import {CustomHeaderProps} from './props';
 import {CustomHeaderState} from './state';
 import {HeaderStyles} from './styles';
-import {View} from 'react-native';
+import {CustomColors} from '../../theme/colors';
 
 export class CustomHeader extends React.Component<
   CustomHeaderProps,
@@ -23,7 +23,7 @@ export class CustomHeader extends React.Component<
       <>
         <TitleText>{this.props.title}</TitleText>
         <SearchIconTouchableOpacity onPress={() => this.changeCollapsed(false)}>
-          <SearchIcon />
+          <SearchIcon widthIcon={24} heightIcon={24} />
         </SearchIconTouchableOpacity>
       </>
     );
@@ -33,32 +33,39 @@ export class CustomHeader extends React.Component<
     const {
       TextInput,
       IconInput,
+      IconContainer,
       CloseIconInput,
       CloseIconInputTouchableOpacity,
     } = HeaderStyles;
 
     return (
       <>
-        <IconInput />
+        <IconContainer>
+          <IconInput widthIcon={24} heightIcon={24} />
+        </IconContainer>
         <TextInput
+          placeholderTextColor={CustomColors.graySmooth}
+          placeholder={this.props.placeholder}
           onFocus={this.props.onFocus}
           onChangeText={this.props.onChangeText}
         />
         <CloseIconInputTouchableOpacity
           onPress={() => this.changeCollapsed(true)}>
-          <CloseIconInput />
+          <CloseIconInput widthIcon={24} heightIcon={24} />
         </CloseIconInputTouchableOpacity>
       </>
     );
   }
 
   render() {
+    const {ContainerView} = HeaderStyles;
+
     return (
-      <View>
+      <ContainerView>
         {this.state.isCollapsed
           ? this.getCollapsedHeader()
           : this.getSearchbarHeader()}
-      </View>
+      </ContainerView>
     );
   }
 }

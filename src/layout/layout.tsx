@@ -1,20 +1,17 @@
 import React from 'react';
-import {StatusBar, Text} from 'react-native';
-import {CustomFonts} from '../theme/fonts';
+import {StatusBar} from 'react-native';
 import {LayoutStyles} from './styles';
+import {HomeScreen} from '../screens/home/screen';
 
 export class Layout extends React.Component {
   render() {
-    let {SafeAreaView} = LayoutStyles;
+    const {SafeAreaView} = LayoutStyles;
 
     return (
       <>
         <StatusBar barStyle="light-content" />
         <SafeAreaView>
-          <Text style={{fontFamily: CustomFonts.circularStdBook}}>AAA</Text>
-          <Text style={{fontFamily: CustomFonts.circularStdBold}}>AAA</Text>
-          <Text style={{fontFamily: CustomFonts.circularStdMedium}}>AAA</Text>
-          <Text>AAA</Text>
+          <HomeScreen />
         </SafeAreaView>
       </>
     );

@@ -1,5 +1,6 @@
 export interface CustomHeaderProps {
-  title?: String;
+  title?: string;
+  placeholder?: string;
   onFocus?: () => void;
   onChangeText?: (text: string) => void;
 }
