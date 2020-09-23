@@ -59,14 +59,14 @@ describe('Header', () => {
       expect(textInput).toHaveLength(isExpectingZero ? 0 : 1);
     };
 
-    const touchableSearch = header.find(SearchIconTouchableOpacity);
     hasInput(true);
+
+    const touchableSearch = header.find(SearchIconTouchableOpacity);
     touchableSearch.simulate('click');
+    hasInput(false);
 
     const touchableClose = header.find(CloseIconInputTouchableOpacity);
-    hasInput(false);
     touchableClose.simulate('click');
-
     hasInput(true);
   });
 
