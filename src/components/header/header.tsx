@@ -1,19 +1,21 @@
-import React from 'react';
+import React, {Ref} from 'react';
 import {CustomHeaderProps} from './props';
 import {CustomHeaderState} from './state';
 import {HeaderStyles} from './styles';
 import {CustomColors} from '../../theme/colors';
+import {TextInput} from "react-native";
 
-export class CustomHeader extends React.Component<
-  CustomHeaderProps,
-  CustomHeaderState
-> {
+export class CustomHeader extends React.Component<CustomHeaderProps, CustomHeaderState> {
+  inputRef: {focus: () => void} | null = null;
+
   state: CustomHeaderState = {
     isCollapsed: true,
   };
 
   changeCollapsed = (isToCollapse: Boolean) => {
-    this.setState({isCollapsed: isToCollapse});
+    this.setState({isCollapsed: isToCollapse}, () => {
+      this.inputRef?.focus()
+    });
   };
 
   getCollapsedHeader() {
@@ -44,6 +46,7 @@ export class CustomHeader extends React.Component<
           <IconInput widthIcon={24} heightIcon={24} />
         </IconContainer>
         <TextInput
+          ref={ref => this.inputRef = ref}
           placeholderTextColor={CustomColors.graySmooth}
           placeholder={this.props.placeholder}
           onFocus={this.props.onFocus}

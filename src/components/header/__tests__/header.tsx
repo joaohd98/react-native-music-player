@@ -70,6 +70,15 @@ describe('Header', () => {
     hasInput(true);
   });
 
+  it('open keyboard on show search bar', () => {
+    const instance = header.instance() as CustomHeader
+
+    instance.inputRef = {focus: () => jest.fn()}
+    header.find(SearchIconTouchableOpacity).simulate('click');
+
+    expect(instance.inputRef.focus).toHaveBeenCalled()
+  });
+
   it('call focus search bar', () => {
     const spy = jest.fn();
 

@@ -22,9 +22,13 @@ export const HeaderStyles = {
     text-align: center;
     font-family: ${CustomFonts.circularStdMedium};
     color: ${CustomColors.gray};
+    margin-left: 24px;
+    padding: 15px
   `,
-  SearchIcon: styled(IconSearch)``,
-  SearchIconTouchableOpacity: styled.TouchableOpacity<TouchableOpacityProps>``,
+  SearchIcon: styled(IconSearch)<IconProps>``,
+  SearchIconTouchableOpacity: styled.TouchableOpacity<TouchableOpacityProps>`
+    justify-content: center;
+  `,
   TextInput: styled.TextInput<TextInputProps>`
     flex: 1;
     margin-right: 20px;
@@ -43,9 +47,7 @@ export const HeaderStyles = {
   `,
   IconInput: styled(IconSearch)<IconProps>``,
   CloseIconInput: styled(IconClose)<IconProps>``,
-  CloseIconInputTouchableOpacity: styled.TouchableOpacity<
-    TouchableOpacityProps
-  >`
+  CloseIconInputTouchableOpacity: styled.TouchableOpacity<TouchableOpacityProps>`
     justify-content: center;
   `,
 };
