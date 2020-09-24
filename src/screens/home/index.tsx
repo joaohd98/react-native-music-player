@@ -1,18 +1,19 @@
 import React from 'react';
 import {CustomHeader} from '../../components/header';
-import {View} from 'react-native';
-import {CustomColors} from "../../theme/colors";
 import {PropsReducers} from "../../redux/reducers";
 import {HomeScreenProps} from "./props";
 import {Dispatch} from "redux";
 import {connect} from "react-redux";
+import {Container} from "../../components/container";
+import {HomeRecommendedView} from "./components/recommended";
 
 export class HomeScreen extends React.Component<HomeScreenProps> {
   render() {
     return (
-      <View style={{flex: 1, backgroundColor: CustomColors.backgroundColor}}>
+      <Container>
         <CustomHeader title={'Home'} placeholder={'Search album song'} />
-      </View>
+        <HomeRecommendedView />
+      </Container>
     );
   }
 }
