@@ -1,5 +1,6 @@
 export const CustomColors = {
   backgroundColor: '#181b2c',
+  tabBarColor: "#151827",
   black: '#383B49',
   blackSmooth: '#585A66',
   gray: '#D0D1D4',
