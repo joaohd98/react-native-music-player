@@ -1,22 +1,27 @@
 import styled from 'styled-components/native';
 import {IconSearch} from '../../../assets/icons/icon-search';
 import {
-  TextInputProps,
-  TextProps,
-  TouchableOpacityProps,
-  ViewProps,
+  Animated, TextInput, TouchableOpacity,
 } from 'react-native';
 import {CustomFonts} from '../../theme/fonts';
 import {CustomColors} from '../../theme/colors';
-import {IconProps} from '../../../assets/icons/props';
 import {IconClose} from '../../../assets/icons/icon-close';
+import {
+  TextAnimatedProps,
+  TextInputAnimatedProps,
+  TouchableOpacityAnimatedProps,
+  ViewAnimatedProps
+} from "../../utils/animation-type";
+
+const InputAnimated = Animated.createAnimatedComponent(TextInput)
+const TouchableAnimated = Animated.createAnimatedComponent(TouchableOpacity)
 
 export const HeaderStyles = {
-  ContainerView: styled.View<ViewProps>`
+  ContainerView: styled.View`
     flex-direction: row;
     margin: 15px;
   `,
-  TitleText: styled.Text<TextProps>`
+  TitleText: styled(Animated.Text)<TextAnimatedProps>`
     flex: 1;
     font-size: 20px;
     text-align: center;
@@ -25,13 +30,15 @@ export const HeaderStyles = {
     margin-left: 24px;
     padding: 15px
   `,
-  SearchIcon: styled(IconSearch)<IconProps>``,
-  SearchIconTouchableOpacity: styled.TouchableOpacity<TouchableOpacityProps>`
+  SearchIcon: styled(IconSearch)``,
+  SearchIconTouchableOpacity: styled(TouchableAnimated)<TouchableOpacityAnimatedProps>`
     justify-content: center;
   `,
-  TextInput: styled.TextInput<TextInputProps>`
+  TextInputContainer: styled.View`
     flex: 1;
-    margin-right: 20px;
+    margin-right: 20px; 
+  `,
+  TextInput: styled(InputAnimated)<TextInputAnimatedProps>`
     padding: 15px 15px 15px 45px;
     color: ${CustomColors.white};
     font-size: 16px;
@@ -39,15 +46,15 @@ export const HeaderStyles = {
     border-radius: 20px;
     background-color: ${CustomColors.blueSmooth};
   `,
-  IconContainer: styled.View`
+  IconContainer: styled(Animated.View)<ViewAnimatedProps>`
     position: absolute;
     z-index: 100;
     margin-top: 12px;
     margin-left: 12px;
   `,
-  IconInput: styled(IconSearch)<IconProps>``,
-  CloseIconInput: styled(IconClose)<IconProps>``,
-  CloseIconInputTouchableOpacity: styled.TouchableOpacity<TouchableOpacityProps>`
+  IconInput: styled(IconSearch)``,
+  CloseIconInput: styled(IconClose)``,
+  CloseIconInputTouchableOpacity: styled(TouchableAnimated)<TouchableOpacityAnimatedProps>`
     justify-content: center;
   `,
 };

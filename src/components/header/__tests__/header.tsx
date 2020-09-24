@@ -1,7 +1,7 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import {CustomHeader} from '../header';
+import {CustomHeader} from '../component';
 import {HeaderStyles} from '../styles';
 import {mount, ReactWrapper} from 'enzyme';
 import {CustomHeaderProps} from '../props';

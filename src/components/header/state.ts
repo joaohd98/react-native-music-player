@@ -1,3 +1,6 @@
+import {Animated} from "react-native";
+
 export interface CustomHeaderState {
-  isCollapsed: Boolean;
+  animated: Animated.Value;
+  isCollapsed: boolean;
 }
