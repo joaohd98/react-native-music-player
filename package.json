@@ -43,9 +43,8 @@
   "jest": {
     "preset": "react-native",
     "testEnvironment": "jsdom",
-    "setupFilesAfterEnv": [
-      "./jest-setup-file.js"
-    ],
+    "setupFiles": ["./__mocks__/animated.ts"],
+    "setupFilesAfterEnv": ["./jest-setup-file.js"],
     "moduleFileExtensions": [
       "ts",
       "tsx",

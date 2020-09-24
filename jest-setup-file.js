@@ -27,4 +27,6 @@ global.navigator = {
 
 copyProps(window, global);
 
+jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');
+
 Enzyme.configure({adapter: new Adapter()});
