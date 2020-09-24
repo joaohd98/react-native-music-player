@@ -5,6 +5,7 @@ import {IconTabHome} from "../../assets/icons/icon-tab-home";
 import {IconTabSongSelected} from "../../assets/icons/icon-tab-song-selected";
 import {IconTabSong} from "../../assets/icons/icon-tab-song";
 import {IconProps} from "../../assets/icons/props";
+import {BottomTabBarOptions} from "@react-navigation/bottom-tabs";
 
 export const LayoutStyles = {
   SafeAreaViewTop: styled.SafeAreaView`
@@ -20,10 +21,6 @@ export const LayoutStyles = {
       widthIcon: 48,
       heightIcon: 48
     }
-
-    console.log("name", name)
-    console.log("name", focused)
-
     switch (name) {
       case "Home": {
         return focused ? IconTabHomeSelected(props) : IconTabHome(props)
@@ -32,5 +29,14 @@ export const LayoutStyles = {
         return focused ? IconTabSongSelected(props) : IconTabSong(props)
       }
     }
-  }
+  },
+  getBottomTabBarOptions: (): BottomTabBarOptions => ({
+    keyboardHidesTabBar: true,
+    showLabel: false,
+    style: {
+      backgroundColor: CustomColors.tabBarColor,
+      marginTop: 16,
+      borderTopWidth: 0,
+    },
+  })
 };
