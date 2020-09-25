@@ -17,16 +17,23 @@ export class LoginScreen extends React.Component<LoginScreenProps, LoginScreenSt
     status: RepositoryStatus.NONE
   }
 
+  componentDidUpdate(prevProps: Readonly<LoginScreenProps>, prevState: Readonly<LoginScreenState>, snapshot?: any) {
+
+  }
+
   onPressLogin = () => {
     this.setState({status: RepositoryStatus.LOADING}, () => {
       this.repository.makeLogin((res) => {
         this.props.saveUser(res)
+        // @ts-ignore
+        // this.props.navigation.navigate('Tabs')
       }, () => {
         Alert.alert("Warning", "We need your permission, to access Spotify")
         this.setState({status: RepositoryStatus.FAILED})
       })
     })
   }
+
 
   render() {
     const {

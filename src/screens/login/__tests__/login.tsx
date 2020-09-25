@@ -14,11 +14,11 @@ describe("LoginScreen", () => {
   let login: ReactWrapper<LoginScreenProps, LoginScreenState>;
 
   beforeEach(() => {
-    login = mount(<LoginScreen onLogin={() => {}}/>);
+    login = mount(<LoginScreen saveUser={() => {}}/>);
   });
 
   it('renders correctly', () => {
-    renderer.create(<LoginScreen onLogin={() => {}} />);
+    renderer.create(<LoginScreen saveUser={() => {}} />);
   });
 
   it('click callback', () => {
@@ -34,7 +34,7 @@ describe("LoginScreen", () => {
     RepositoryModel.situation = ServiceTestingSituation.onSuccess
 
     const spy = jest.fn()
-    login.setProps({onLogin: spy})
+    login.setProps({saveUser: spy})
     login.update()
 
     const button = login.find(LoginButtonView)

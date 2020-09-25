@@ -10,6 +10,7 @@ import {enableScreens} from "react-native-screens";
 import {createNativeStackNavigator} from "react-native-screens/native-stack";
 
 enableScreens();
+
 const Stack = createNativeStackNavigator<{
   Login: undefined;
   Tabs: undefined;
