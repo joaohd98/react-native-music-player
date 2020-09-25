@@ -21,13 +21,5 @@ export const LoginScreenStyles = {
     border-radius: 40px;
     align-items: center;
   `,
-  TouchableText: styled.Text`
-    color: ${CustomColors.white};
-    font-size: 20px;
-    font-weight: bold;
-    justify-content: center;
-    text-align: center;
-    margin-left: 15px;
-  `,
   TouchableImage: styled(ImageSpotify)``
 }

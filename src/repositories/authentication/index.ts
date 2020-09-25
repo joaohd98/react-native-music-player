@@ -4,13 +4,11 @@ import {KEYS} from "../../../keys";
 export class AuthenticationHandler {
   spotifyAuthConfig: AuthConfiguration;
 
-  static instance = new AuthenticationHandler()
-
   constructor() {
     this.spotifyAuthConfig = {
       clientId: KEYS.clientID,
       clientSecret: KEYS.clientSecret,
-      redirectUrl: 'com.your.app.name://oauthredirect',
+      redirectUrl: 'com.joao.reactnative.MusicPlayer://oauthredirect',
       scopes: [
         'playlist-read-private',
         'playlist-modify-public',
@@ -26,15 +24,19 @@ export class AuthenticationHandler {
     };
   }
 
-  async onLogin() {
+  async makeLogin() {
     try {
-      return await authorize(this.spotifyAuthConfig);
+      const result = await authorize(this.spotifyAuthConfig);
+      console.log(JSON.stringify(result));
+      return result
     } catch (error) {
       console.log(JSON.stringify(error));
     }
   }
 
   async refreshLogin(refreshToken: string) {
+    console.log(JSON.stringify(refreshToken));
+
     return await refresh(this.spotifyAuthConfig, {
       refreshToken: refreshToken,
     });

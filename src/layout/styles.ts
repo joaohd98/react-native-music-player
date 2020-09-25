@@ -1,10 +1,10 @@
 import styled from 'styled-components/native';
 import {CustomColors} from '../theme/colors';
-import {IconTabHomeSelected} from "../../assets/icons/icon-tab-home-selected";
-import {IconTabHome} from "../../assets/icons/icon-tab-home";
-import {IconTabSongSelected} from "../../assets/icons/icon-tab-song-selected";
-import {IconTabSong} from "../../assets/icons/icon-tab-song";
-import {IconProps} from "../../assets/icons/props";
+import {IconTabHomeSelected} from "../../assets/images/icon-tab-home-selected";
+import {IconTabHome} from "../../assets/images/icon-tab-home";
+import {IconTabSongSelected} from "../../assets/images/icon-tab-song-selected";
+import {IconTabSong} from "../../assets/images/icon-tab-song";
+import {IconProps} from "../../assets/images/props";
 import {BottomTabBarOptions} from "@react-navigation/bottom-tabs";
 
 export const LayoutStyles = {
