@@ -1,15 +1,15 @@
 import React from "react";
 import {LoginScreenStyles} from "./styles";
 import {AuthenticationHandler} from "../../repositories/authentication";
+import {Alert} from "react-native";
 
 export class LoginScreen extends React.Component {
-  authHandler = new AuthenticationHandler()
 
   onPressLogin() {
-    new AuthenticationHandler().makeLogin().then(() => {
-
-    }).catch(() => {
-
+    AuthenticationHandler.makeLogin((res) => {
+      Alert.alert("Sucesso");
+    }, () => {
+      Alert.alert("Falha");
     })
   }
 

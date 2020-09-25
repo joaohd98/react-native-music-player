@@ -46,6 +46,24 @@ static void InitializeFlipper(UIApplication *application) {
   return YES;
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *) options {
+  return [self.authorizationFlowManagerDelegate resumeExternalUserAgentFlowWithURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity
+ restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> *restorableObjects))restorationHandler {
+   if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
+     if (self.authorizationFlowManagerDelegate) {
+       BOOL resumableAuth = [self.authorizationFlowManagerDelegate resumeExternalUserAgentFlowWithURL:userActivity.webpageURL];
+       if (resumableAuth) {
+         return YES;
+       }
+     }
+   }
+  
+  return NO;
+}
+
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
 #if DEBUG
@@ -55,8 +73,5 @@ static void InitializeFlipper(UIApplication *application) {
 #endif
 }
 
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *, id> *) options {
-  return [self.authorizationFlowManagerDelegate resumeExternalUserAgentFlowWithURL:url];
-}
 
 @end

@@ -23,6 +23,7 @@
 		9F4C67C96A126D9C26EFDD1D /* libPods-MusicPlayerReactNative-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C56C59E85C4528A5069D7D /* libPods-MusicPlayerReactNative-tvOSTests.a */; };
 		C894204B98B7F01EFDF7EF14 /* libPods-MusicPlayerReactNative-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF01FBFE07D8C8BC52AE7A7E /* libPods-MusicPlayerReactNative-tvOS.a */; };
 		D7EEA65E4C994549A6D6D483 /* CircularStd-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D175438BC054BECA9161FAD /* CircularStd-Book.ttf */; };
+		DCA9DE82251E3CCA007C3AD1 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCA9DE81251E3CCA007C3AD1 /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +49,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* MusicPlayerReactNativeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MusicPlayerReactNativeTests.m; sourceTree = "<group>"; };
 		06CE465A67804E9790279E21 /* CircularStd-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "CircularStd-Medium.ttf"; path = "../assets/fonts/CircularStd-Medium.ttf"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* MusicPlayerReactNative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPlayerReactNative.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* Muzic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Muzic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MusicPlayerReactNative/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = MusicPlayerReactNative/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MusicPlayerReactNative/Images.xcassets; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 		B7F3580DF2FE63BE5C22EE61 /* Pods-MusicPlayerReactNative-MusicPlayerReactNativeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicPlayerReactNative-MusicPlayerReactNativeTests.release.xcconfig"; path = "Target Support Files/Pods-MusicPlayerReactNative-MusicPlayerReactNativeTests/Pods-MusicPlayerReactNative-MusicPlayerReactNativeTests.release.xcconfig"; sourceTree = "<group>"; };
 		BB31AF1D7B8842ECB4F8B219 /* Pods-MusicPlayerReactNative.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicPlayerReactNative.release.xcconfig"; path = "Target Support Files/Pods-MusicPlayerReactNative/Pods-MusicPlayerReactNative.release.xcconfig"; sourceTree = "<group>"; };
 		BB3219780D49849AB5B44C65 /* Pods-MusicPlayerReactNative-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicPlayerReactNative-tvOS.release.xcconfig"; path = "Target Support Files/Pods-MusicPlayerReactNative-tvOS/Pods-MusicPlayerReactNative-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		DCA9DE81251E3CCA007C3AD1 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		FF01FBFE07D8C8BC52AE7A7E /* libPods-MusicPlayerReactNative-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MusicPlayerReactNative-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				705D7D7BDFC50411A0431134 /* libPods-MusicPlayerReactNative.a in Frameworks */,
+				DCA9DE82251E3CCA007C3AD1 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +163,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DCA9DE81251E3CCA007C3AD1 /* GameKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				914ACD06427867DCBBCF385A /* libPods-MusicPlayerReactNative.a */,
@@ -196,7 +200,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* MusicPlayerReactNative.app */,
+				13B07F961A680F5B00A75B9A /* Muzic.app */,
 				00E356EE1AD99517003FC87E /* MusicPlayerReactNativeTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* MusicPlayerReactNative-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* MusicPlayerReactNative-tvOSTests.xctest */,
@@ -255,7 +259,7 @@
 			);
 			name = MusicPlayerReactNative;
 			productName = MusicPlayerReactNative;
-			productReference = 13B07F961A680F5B00A75B9A /* MusicPlayerReactNative.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* Muzic.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2D02E47A1E0B4A5D006451C7 /* MusicPlayerReactNative-tvOS */ = {
@@ -310,6 +314,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = R8RR6LZ5DA;
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -675,8 +680,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R8RR6LZ5DA;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MusicPlayerReactNative/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -684,7 +691,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.reactnative.musicplayer;
-				PRODUCT_NAME = MusicPlayerReactNative;
+				PRODUCT_NAME = Muzic;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -698,7 +705,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = R8RR6LZ5DA;
 				INFOPLIST_FILE = MusicPlayerReactNative/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -706,7 +715,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.joao.reactnative.musicplayer;
-				PRODUCT_NAME = MusicPlayerReactNative;
+				PRODUCT_NAME = Muzic;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
