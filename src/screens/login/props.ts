@@ -1,5 +1,6 @@
-import {AuthorizeResult} from "react-native-app-auth";
+import {ScreenProps} from "../../utils/screen-props";
+import {UserProps} from "../../user-persistence/props";
 
-export interface LoginScreenProps {
-  saveUser: (res: AuthorizeResult) => void
-}
+export interface LoginScreenProps extends UserProps, ScreenProps<"LoginScreen">{}
+
+

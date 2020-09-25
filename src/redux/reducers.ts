@@ -16,6 +16,7 @@ export interface PropsReducers {
 const persistConfig: PersistConfig<UserProps | undefined> = {
   storage: AsyncStorage,
   key: "userProps",
+  blacklist: ["saveUser"]
 }
 
 const userPersistedReducer = persistReducer<UserProps | undefined, UserActionType>(persistConfig, UserReducer)

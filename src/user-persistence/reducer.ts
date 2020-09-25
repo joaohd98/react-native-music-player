@@ -1,15 +1,29 @@
 import {Reducer} from "react";
-import {UserActionType} from "./action-type";
+import {UserActionConst, UserActionType} from "./action-type";
 import {UserProps} from "./props";
+import {UserAction} from "./action";
 
-export const UserInitialState: UserProps = {};
+export const UserInitialState: UserProps = {
+  isLogged: false,
+  token: "",
+  refreshToken: "",
+  saveUser: UserAction.saveUser
+};
 
 export const UserReducer: Reducer<UserProps | undefined, UserActionType> = (
   state= UserInitialState,
   action
 ): UserProps => {
   switch (action.type) {
+    case UserActionConst.saveUser: {
+      return {
+        ...state,
+        isLogged: true,
+        token: action.authorize.accessToken,
+        refreshToken: action.authorize.refreshToken
+      }
+    }
 
-    default: return state  ;
+    default: return state ;
   }
 };

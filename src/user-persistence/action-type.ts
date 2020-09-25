@@ -1,13 +1,13 @@
 import {Action} from "redux";
+import {AuthorizeResult} from "react-native-app-auth";
 
 export enum UserActionConst {
-  makeLogin = "UserActionConst/makeLogin",
-  second = "UserActionConst/second",
+  saveUser = "UserActionConst/saveUser",
 }
 
-interface MakeLogin extends Action<UserActionConst.makeLogin> {}
+interface SaveUser extends Action<UserActionConst.saveUser> {
+  type: UserActionConst.saveUser,
+  authorize: AuthorizeResult
+}
 
-interface Second extends Action<UserActionConst.second> {}
-
-export type UserActionType =
-  MakeLogin | Second
+export type UserActionType = SaveUser

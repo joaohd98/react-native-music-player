@@ -9,6 +9,9 @@ import {LoginScreenProps} from "./props";
 import {bindActionCreators, Dispatch} from "redux";
 import {connect} from "react-redux";
 import {UserAction} from "../../user-persistence/action";
+import {PropsReducers} from "../../redux/reducers";
+import {UserPropsActions} from "../../user-persistence/props";
+import {UserInitialState} from "../../user-persistence/reducer";
 
 export class LoginScreen extends React.Component<LoginScreenProps, LoginScreenState> {
   repository = new AuthenticationRepository()
@@ -18,22 +21,21 @@ export class LoginScreen extends React.Component<LoginScreenProps, LoginScreenSt
   }
 
   componentDidUpdate(prevProps: Readonly<LoginScreenProps>, prevState: Readonly<LoginScreenState>, snapshot?: any) {
-
+    if(this.props.isLogged) {
+      this.props.navigation?.navigate("TabsBottom")
+    }
   }
 
   onPressLogin = () => {
     this.setState({status: RepositoryStatus.LOADING}, () => {
       this.repository.makeLogin((res) => {
         this.props.saveUser(res)
-        // @ts-ignore
-        // this.props.navigation.navigate('Tabs')
       }, () => {
         Alert.alert("Warning", "We need your permission, to access Spotify")
         this.setState({status: RepositoryStatus.FAILED})
       })
     })
   }
-
 
   render() {
     const {
@@ -50,8 +52,12 @@ export class LoginScreen extends React.Component<LoginScreenProps, LoginScreenSt
   }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch): LoginScreenProps => ({
-  saveUser: bindActionCreators(UserAction.saveUser,dispatch)
+const mapStateToProps = (state: PropsReducers): LoginScreenProps => ({
+  ...state.UserProps
 });
 
-export const LoginScreenRedux = connect(null, mapDispatchToProps)(LoginScreen);
+const mapDispatchToProps = (dispatch: Dispatch): UserPropsActions => ({
+  saveUser: bindActionCreators(UserInitialState.saveUser, dispatch)
+});
+
+export const LoginScreenRedux = connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

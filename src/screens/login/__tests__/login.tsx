@@ -9,16 +9,17 @@ import {LoginButtonView} from "../components/button";
 import {LoginScreenProps} from "../props";
 import {RepositoryModel, ServiceTestingSituation} from "../../../repositories/repository-model";
 import {RepositoryStatus} from "../../../repositories/repository-status";
+import {UserInitialState} from "../../../user-persistence/reducer";
 
 describe("LoginScreen", () => {
   let login: ReactWrapper<LoginScreenProps, LoginScreenState>;
 
   beforeEach(() => {
-    login = mount(<LoginScreen saveUser={() => {}}/>);
+    login = mount(<LoginScreen {...UserInitialState} />);
   });
 
   it('renders correctly', () => {
-    renderer.create(<LoginScreen saveUser={() => {}} />);
+    renderer.create(<LoginScreen {...UserInitialState} />);
   });
 
   it('click callback', () => {
@@ -50,6 +51,22 @@ describe("LoginScreen", () => {
     button.simulate("click")
 
     expect(login.state("status")).toBe(RepositoryStatus.FAILED)
+  });
+
+  it('onLogged change page', () => {
+    const spy = jest.fn()
+
+    const navigation = login.prop("navigation")
+
+    login.setProps({
+      navigation: {
+        ...navigation!,
+        navigate: spy
+      },
+      isLogged: true
+    })
+
+    expect(spy).toHaveBeenCalled()
   });
 })
 
