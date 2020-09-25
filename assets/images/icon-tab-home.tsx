@@ -8,9 +8,9 @@ import Svg, {
   TSpan,
   Rect,
 } from "react-native-svg"
-import {IconProps} from './props';
+import {SvgProps} from './props';
 
-export const IconTabHome = (props: IconProps) => {
+export const IconTabHome = (props: SvgProps) => {
   return (
     <Svg
       width={props.widthIcon}

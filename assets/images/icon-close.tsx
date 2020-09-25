@@ -1,8 +1,8 @@
 import React from 'react';
 import Svg, {Path} from 'react-native-svg';
-import {IconProps} from './props';
+import {SvgProps} from './props';
 
-export const IconClose = (props: IconProps) => {
+export const IconClose = (props: SvgProps) => {
   return (
     <Svg
       width={props.widthIcon}

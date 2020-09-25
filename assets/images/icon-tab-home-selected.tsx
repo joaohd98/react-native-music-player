@@ -8,9 +8,9 @@ import Svg, {
   G,
   Rect,
 } from "react-native-svg"
-import {IconProps} from './props';
+import {SvgProps} from './props';
 
-export const IconTabHomeSelected = (props: IconProps) => {
+export const IconTabHomeSelected = (props: SvgProps) => {
   return (
     <Svg width={props.widthIcon} height={props.heightIcon} viewBox="0 0 30 39">
       <Defs>

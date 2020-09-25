@@ -1,8 +1,8 @@
 import * as React from "react"
-import {IconProps} from './props';
+import {SvgProps} from './props';
 import Svg, { Text, TSpan, G, Path } from "react-native-svg"
 
-export const IconTabSong = (props: IconProps) => {
+export const IconTabSong = (props: SvgProps) => {
   return (
     <Svg width={props.widthIcon} height={props.heightIcon} viewBox="0 0 30 39">
       <Text

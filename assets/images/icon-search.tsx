@@ -1,8 +1,8 @@
 import React from 'react';
 import Svg, {Path} from 'react-native-svg';
-import {IconProps} from './props';
+import {SvgProps} from './props';
 
-export const IconSearch = (props: IconProps) => {
+export const IconSearch = (props: SvgProps) => {
   return (
     <Svg width={props.widthIcon} height={props.heightIcon} viewBox="0 0 18 18">
       <Path

@@ -1,11 +1,11 @@
 import styled from 'styled-components/native';
-import {IconSearch} from '../../../assets/icons/icon-search';
+import {IconSearch} from '../../../assets/images/icon-search';
 import {
   Animated, TextInput, TouchableOpacity,
 } from 'react-native';
 import {CustomFonts} from '../../theme/fonts';
 import {CustomColors} from '../../theme/colors';
-import {IconClose} from '../../../assets/icons/icon-close';
+import {IconClose} from '../../../assets/images/icon-close';
 import {
   TextAnimatedProps,
   TextInputAnimatedProps,
