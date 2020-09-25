@@ -10,6 +10,7 @@ export const CustomColors = {
   pink: '#D9519D',
   white: '#FFF',
   blueSmooth: '#292E4B',
+  spotifyColor: "#1DB954"
 };
 
 export const CustomGradients = {

@@ -4,6 +4,8 @@ import {AuthenticationHandler} from "../../repositories/authentication";
 import {Alert} from "react-native";
 import {LoginScreenState} from "./state";
 import {RepositoryStatus} from "../../repositories/repository-status";
+import {CustomColors} from "../../theme/colors";
+import {LoginButtonView} from "./components/button";
 
 export class LoginScreen extends React.Component<{}, LoginScreenState> {
   state: LoginScreenState = {
@@ -20,16 +22,6 @@ export class LoginScreen extends React.Component<{}, LoginScreenState> {
     })
   }
 
-  getInnerContent(): Element {
-    const {TouchableImage, ActivityIndicator} = LoginScreenStyles
-
-    if(this.state.status == RepositoryStatus.LOADING) {
-      return <ActivityIndicator size="large" color="#0000ff" />
-    }
-    else {
-      return <TouchableImage heightIcon={50}  widthIcon={160} />
-    }
-  }
 
   render() {
     const {
@@ -41,9 +33,7 @@ export class LoginScreen extends React.Component<{}, LoginScreenState> {
     return (
       <Container>
         <ImageLogo heightIcon={200}  widthIcon={200} />
-        <TouchableOpacity onPress={this.onPressLogin} disabled={this.state.status == RepositoryStatus.LOADING}>
-          { this.getInnerContent() }
-        </TouchableOpacity>
+        <LoginButtonView onPress={this.onPressLogin} disabled={this.state.status == RepositoryStatus.LOADING} />
       </Container>
     )
   }
