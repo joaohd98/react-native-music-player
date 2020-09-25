@@ -58,7 +58,8 @@
     "preset": "react-native",
     "testEnvironment": "jsdom",
     "setupFiles": [
-      "./__mocks__/animated.ts"
+      "./__mocks__/animated.ts",
+      "./__mocks__/react-native-app-auth.ts"
     ],
     "setupFilesAfterEnv": [
       "./jest-setup-file.js"

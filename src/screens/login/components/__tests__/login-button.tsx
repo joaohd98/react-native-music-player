@@ -14,11 +14,11 @@ const {
   ActivityIndicator
 } = LoginButtonStyles
 
-describe("LoginScreen", () => {
+describe("LoginButtonView", () => {
   let loginButton: ReactWrapper<LoginButtonProps>;
 
   beforeEach(() => {
-    const loginScreen = mount(<LoginScreen />)
+    const loginScreen = mount(<LoginScreen onLogin={() => {}} />)
     const props = loginScreen.find(LoginButtonView).props()
 
     loginButton = mount(<LoginButtonView {...props}/>)

@@ -1,33 +1,33 @@
 import React from "react";
 import {LoginScreenStyles} from "./styles";
-import {AuthenticationHandler} from "../../repositories/authentication";
+import {AuthenticationRepository} from "../../repositories/authentication";
 import {Alert} from "react-native";
 import {LoginScreenState} from "./state";
 import {RepositoryStatus} from "../../repositories/repository-status";
-import {CustomColors} from "../../theme/colors";
 import {LoginButtonView} from "./components/button";
+import {LoginScreenProps} from "./props";
 
-export class LoginScreen extends React.Component<{}, LoginScreenState> {
+export class LoginScreen extends React.Component<LoginScreenProps, LoginScreenState> {
+  repository = new AuthenticationRepository()
+
   state: LoginScreenState = {
     status: RepositoryStatus.NONE
   }
 
   onPressLogin = () => {
     this.setState({status: RepositoryStatus.LOADING}, () => {
-      AuthenticationHandler.makeLogin((res) => {
-        Alert.alert("Sucesso");
+      this.repository.makeLogin((res) => {
+        this.props.onLogin()
       }, () => {
         this.setState({status: RepositoryStatus.FAILED})
       })
     })
   }
 
-
   render() {
     const {
       Container,
       ImageLogo,
-      TouchableOpacity,
     } = LoginScreenStyles
 
     return (

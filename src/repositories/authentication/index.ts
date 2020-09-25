@@ -1,8 +1,9 @@
 import {AuthConfiguration, authorize, AuthorizeResult, refresh} from 'react-native-app-auth';
 import {KEYS} from "../../../keys";
+import {RepositoryModel} from "../repository-model";
 
-export class AuthenticationHandler {
-  private static spotifyAuthConfig: AuthConfiguration = {
+export class AuthenticationRepository extends RepositoryModel {
+  private spotifyAuthConfig: AuthConfiguration = {
     clientId: KEYS.clientID,
     clientSecret: KEYS.clientSecret,
     redirectUrl: "com.joao.reactnative.musicplayer:/oauthredirect",
@@ -20,14 +21,21 @@ export class AuthenticationHandler {
     },
   }
 
-  static makeLogin(onSuccess: (res: AuthorizeResult) => void, onFailed: () => void) {
-    authorize(AuthenticationHandler.spotifyAuthConfig).then(onSuccess).catch(onFailed)
+  makeLogin(onSuccess: (res: AuthorizeResult) => void, onFailed: () => void) {
+    this.callService<AuthorizeResult>(authorize(this.spotifyAuthConfig), onSuccess, onFailed, {
+      accessToken: "",
+      accessTokenExpirationDate: "",
+      authorizationCode: "",
+      idToken: "",
+      refreshToken: "",
+      scopes: [],
+      tokenType: ""
+    })
   }
 
-  private static async refreshLogin(refreshToken: string) {
-    return await refresh(AuthenticationHandler.spotifyAuthConfig, {
+  async refreshLogin(refreshToken: string, onSuccess: (res: AuthorizeResult) => void, onFailed: () => void) {
+    return await refresh(this.spotifyAuthConfig, {
       refreshToken: refreshToken,
-    });
+    }).then();
   }
-
 }
