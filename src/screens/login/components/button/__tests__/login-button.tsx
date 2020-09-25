@@ -3,10 +3,10 @@ import React from 'react';
 
 import renderer from 'react-test-renderer';
 import {mount, ReactWrapper} from "enzyme";
-import {LoginButtonStyles} from "../button/styles";
-import {LoginButtonProps} from "../button/props";
-import {LoginButtonView} from "../button";
-import {LoginScreen} from "../../index";
+import {LoginButtonStyles} from "../styles";
+import {LoginButtonProps} from "../props";
+import {LoginButtonView} from "../index";
+import {LoginScreen} from "../../../index";
 
 const {
   TouchableOpacity,

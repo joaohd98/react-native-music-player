@@ -6,6 +6,9 @@ import {LoginScreenState} from "./state";
 import {RepositoryStatus} from "../../repositories/repository-status";
 import {LoginButtonView} from "./components/button";
 import {LoginScreenProps} from "./props";
+import {bindActionCreators, Dispatch} from "redux";
+import {connect} from "react-redux";
+import {UserAction} from "../../user-persistence/action";
 
 export class LoginScreen extends React.Component<LoginScreenProps, LoginScreenState> {
   repository = new AuthenticationRepository()
@@ -17,7 +20,7 @@ export class LoginScreen extends React.Component<LoginScreenProps, LoginScreenSt
   onPressLogin = () => {
     this.setState({status: RepositoryStatus.LOADING}, () => {
       this.repository.makeLogin((res) => {
-        this.props.onLogin()
+        this.props.saveUser(res)
       }, () => {
         Alert.alert("Warning", "We need your permission, to access Spotify")
         this.setState({status: RepositoryStatus.FAILED})
@@ -39,3 +42,9 @@ export class LoginScreen extends React.Component<LoginScreenProps, LoginScreenSt
     )
   }
 }
+
+const mapDispatchToProps = (dispatch: Dispatch): LoginScreenProps => ({
+  saveUser: bindActionCreators(UserAction.saveUser,dispatch)
+});
+
+export const LoginScreenRedux = connect(null, mapDispatchToProps)(LoginScreen);

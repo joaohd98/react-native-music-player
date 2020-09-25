@@ -1,3 +1,5 @@
+import {AuthorizeResult} from "react-native-app-auth";
+
 export interface LoginScreenProps {
-  onLogin: () => void
+  saveUser: (res: AuthorizeResult) => void
 }

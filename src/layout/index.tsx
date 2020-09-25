@@ -1,20 +1,23 @@
 import React from 'react';
 import {StatusBar} from 'react-native';
 import {LayoutStyles} from './styles';
-import {HomeScreen, HomeScreenRedux} from '../screens/home';
-import {SongsScreen} from "../screens/songs";
 import {NavigationContainer} from "@react-navigation/native";
-import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import {TabRoutesList} from "../routes/tab-routes";
+import { TabsNavigation} from "../routes/tab-routes";
 import {Provider} from "react-redux";
 import {STORE} from "../redux/store";
-import {LoginScreen} from "../screens/login";
+import {LoginScreenRedux} from "../screens/login";
+import {enableScreens} from "react-native-screens";
+import {createNativeStackNavigator} from "react-native-screens/native-stack";
 
-const Tab = createBottomTabNavigator<TabRoutesList>();
+enableScreens();
+const Stack = createNativeStackNavigator<{
+  Login: undefined;
+  Tabs: undefined;
+}>();
 
 export class Layout extends React.Component {
   render() {
-    const {SafeAreaViewTop, Container, getTabIcon, getBottomTabBarOptions} = LayoutStyles;
+    const {SafeAreaViewTop, Container} = LayoutStyles;
 
     return (
       <>
@@ -22,18 +25,12 @@ export class Layout extends React.Component {
           <StatusBar barStyle="light-content" />
           <SafeAreaViewTop />
           <Container>
-            {/*<NavigationContainer>*/}
-              <LoginScreen />
-              {/*<Tab.Navigator*/}
-              {/*  screenOptions={({route}) => ({*/}
-              {/*    tabBarIcon: ({focused}) => getTabIcon(route.name, focused)*/}
-              {/*  })}*/}
-              {/*  tabBarOptions={getBottomTabBarOptions()}*/}
-              {/*>*/}
-              {/*  <Tab.Screen name="Home" component={HomeScreenRedux} />*/}
-              {/*  <Tab.Screen name="Songs" component={SongsScreen} />*/}
-              {/*</Tab.Navigator>*/}
-            {/*</NavigationContainer>*/}
+            <NavigationContainer>
+              <Stack.Navigator screenOptions={{headerShown: false}}>
+                <Stack.Screen name="Login" component={LoginScreenRedux} />
+                <Stack.Screen name="Tabs" component={TabsNavigation} />
+              </Stack.Navigator>
+            </NavigationContainer>
           </Container>
         </Provider>
       </>

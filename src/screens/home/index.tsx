@@ -6,13 +6,14 @@ import {Dispatch} from "redux";
 import {connect} from "react-redux";
 import {Container} from "../../components/container";
 import {HomeRecommendedView} from "./components/recommended";
+import {RepositoryStatus} from "../../repositories/repository-status";
 
 export class HomeScreen extends React.Component<HomeScreenProps> {
   render() {
     return (
       <Container>
         <CustomHeader title={'Home'} placeholder={'Search album song'} />
-        <HomeRecommendedView />
+        <HomeRecommendedView status={RepositoryStatus.LOADING} />
       </Container>
     );
   }
