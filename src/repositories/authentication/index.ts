@@ -5,7 +5,7 @@ export class AuthenticationHandler {
   private static spotifyAuthConfig: AuthConfiguration = {
     clientId: KEYS.clientID,
     clientSecret: KEYS.clientSecret,
-    redirectUrl: "com.joao.reactnative.musicplayer://oauthredirect",
+    redirectUrl: "com.joao.reactnative.musicplayer:/oauthredirect",
     scopes: [
       'playlist-read-private',
       'playlist-modify-public',
