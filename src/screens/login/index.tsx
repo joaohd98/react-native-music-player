@@ -19,6 +19,7 @@ export class LoginScreen extends React.Component<LoginScreenProps, LoginScreenSt
       this.repository.makeLogin((res) => {
         this.props.onLogin()
       }, () => {
+        Alert.alert("Warning", "We need your permission, to access Spotify")
         this.setState({status: RepositoryStatus.FAILED})
       })
     })
