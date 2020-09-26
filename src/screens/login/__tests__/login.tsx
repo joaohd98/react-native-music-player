@@ -7,15 +7,18 @@ import {mount, ReactWrapper} from "enzyme";
 import {LoginScreenState} from "../state";
 import {LoginButtonView} from "../components/button";
 import {LoginScreenProps} from "../props";
-import {RepositoryModel, ServiceTestingSituation} from "../../../repositories/repository-model";
 import {RepositoryStatus} from "../../../repositories/repository-status";
 import {UserInitialState} from "../../../user-persistence/reducer";
+import {AuthenticationRepository} from "../../../repositories/authentication";
+import {AuthorizeResult} from "react-native-app-auth";
 
 describe("LoginScreen", () => {
   let login: ReactWrapper<LoginScreenProps, LoginScreenState>;
+  let repository: AuthenticationRepository;
 
   beforeEach(() => {
     login = mount(<LoginScreen {...UserInitialState} />);
+    repository = (login.instance() as LoginScreen).repository
   });
 
   it('renders correctly', () => {
@@ -23,7 +26,7 @@ describe("LoginScreen", () => {
   });
 
   it('click callback', () => {
-    RepositoryModel.situation = ServiceTestingSituation.noAction
+    repository.makeLogin = () => {}
 
     const button = login.find(LoginButtonView)
     button.simulate("click")
@@ -32,7 +35,19 @@ describe("LoginScreen", () => {
   });
 
   it('click onSuccess', () => {
-    RepositoryModel.situation = ServiceTestingSituation.onSuccess
+    repository.makeLogin = (onSuccess) => {
+      const mock: AuthorizeResult = {
+        accessToken: "",
+        accessTokenExpirationDate: "",
+        authorizationCode: "",
+        idToken: "",
+        refreshToken: "",
+        scopes: [],
+        tokenType: ""
+      }
+
+      onSuccess(mock)
+    }
 
     const spy = jest.fn()
     login.setProps({saveUser: spy})
@@ -45,7 +60,9 @@ describe("LoginScreen", () => {
   });
 
   it('click onFailed', () => {
-    RepositoryModel.situation = ServiceTestingSituation.onFailed
+    repository.makeLogin = (onSuccess, onFailed) => {
+      onFailed()
+    }
 
     const button = login.find(LoginButtonView)
     button.simulate("click")

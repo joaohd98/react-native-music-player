@@ -1,8 +1,7 @@
 import {AuthConfiguration, authorize, AuthorizeResult, refresh} from 'react-native-app-auth';
 import {KEYS} from "../../../keys";
-import {RepositoryModel} from "../repository-model";
 
-export class AuthenticationRepository extends RepositoryModel {
+export class AuthenticationRepository  {
   private spotifyAuthConfig: AuthConfiguration = {
     clientId: KEYS.clientID,
     clientSecret: KEYS.clientSecret,
@@ -22,15 +21,7 @@ export class AuthenticationRepository extends RepositoryModel {
   }
 
   makeLogin(onSuccess: (res: AuthorizeResult) => void, onFailed: () => void) {
-    this.callService<AuthorizeResult>(authorize(this.spotifyAuthConfig), onSuccess, onFailed, {
-      accessToken: "",
-      accessTokenExpirationDate: "",
-      authorizationCode: "",
-      idToken: "",
-      refreshToken: "",
-      scopes: [],
-      tokenType: ""
-    })
+    authorize(this.spotifyAuthConfig).then(onSuccess).catch(onFailed)
   }
 
   async refreshLogin(refreshToken: string, onSuccess: (res: AuthorizeResult) => void, onFailed: () => void) {

@@ -8,7 +8,6 @@ import {LoginButtonView} from "./components/button";
 import {LoginScreenProps} from "./props";
 import {bindActionCreators, Dispatch} from "redux";
 import {connect} from "react-redux";
-import {UserAction} from "../../user-persistence/action";
 import {PropsReducers} from "../../redux/reducers";
 import {UserPropsActions} from "../../user-persistence/props";
 import {UserInitialState} from "../../user-persistence/reducer";
