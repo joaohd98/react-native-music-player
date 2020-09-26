@@ -3,9 +3,10 @@ import {StatusBar} from 'react-native';
 import {LayoutStyles} from './styles';
 import {NavigationContainer} from "@react-navigation/native";
 import {Provider} from "react-redux";
-import {STORE} from "../redux/store";
+import {PERSISTER_STORE, STORE} from "../redux/store";
 import {enableScreens} from "react-native-screens";
 import {StackNavigation} from "../routes/stack-navigation";
+import { PersistGate } from 'redux-persist/integration/react'
 
 enableScreens();
 
@@ -16,13 +17,15 @@ export class Layout extends React.Component {
     return (
       <>
         <Provider store={STORE}>
-          <StatusBar barStyle="light-content" />
-          <SafeAreaViewTop />
-          <Container>
-            <NavigationContainer>
-              <StackNavigation />
-            </NavigationContainer>
-          </Container>
+          <PersistGate loading={null} persistor={PERSISTER_STORE}>
+            <StatusBar barStyle="light-content" />
+            <SafeAreaViewTop />
+            <Container>
+              <NavigationContainer>
+                <StackNavigation />
+              </NavigationContainer>
+            </Container>
+          </PersistGate>
         </Provider>
       </>
     );
