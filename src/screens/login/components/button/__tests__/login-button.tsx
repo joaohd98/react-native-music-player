@@ -7,6 +7,7 @@ import {LoginButtonStyles} from "../styles";
 import {LoginButtonProps} from "../props";
 import {LoginButtonView} from "../index";
 import {LoginScreen} from "../../../index";
+import {UserInitialState} from "../../../../../user-persistence/reducer";
 
 const {
   TouchableOpacity,
@@ -18,7 +19,7 @@ describe("LoginButtonView", () => {
   let loginButton: ReactWrapper<LoginButtonProps>;
 
   beforeEach(() => {
-    const loginScreen = mount(<LoginScreen onLogin={() => {}} />)
+    const loginScreen = mount(<LoginScreen {...UserInitialState} />)
     const props = loginScreen.find(LoginButtonView).props()
 
     loginButton = mount(<LoginButtonView {...props}/>)
