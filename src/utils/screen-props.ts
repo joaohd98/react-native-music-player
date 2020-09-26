@@ -1,6 +1,6 @@
 import {StackNavigationProp} from "@react-navigation/stack";
 import {RouteProp} from "@react-navigation/native";
-import {Routes} from "../routes/routes";
+import {Routes} from "../routes/stack-navigation";
 
 type Types = "LoginScreen" | "TabsBottom" | "HomeScreen" | "SongsScreen";
 
