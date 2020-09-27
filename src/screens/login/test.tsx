@@ -2,14 +2,14 @@ import 'react-native';
 import React from 'react';
 
 import renderer from 'react-test-renderer';
-import {LoginScreen} from "../index";
+import {LoginScreen} from "./index";
 import {mount, ReactWrapper} from "enzyme";
-import {LoginScreenState} from "../state";
-import {LoginButtonView} from "../components/button";
-import {LoginScreenProps} from "../props";
-import {RepositoryStatus} from "../../../repositories/repository-status";
-import {UserInitialState} from "../../../user-persistence/reducer";
-import {AuthenticationRepository} from "../../../repositories/authentication";
+import {LoginScreenState} from "./state";
+import {LoginButtonView} from "./components/button";
+import {LoginScreenProps} from "./props";
+import {RepositoryStatus} from "../../repositories/repository-status";
+import {UserInitialState} from "../../user-persistence/reducer";
+import {AuthenticationRepository} from "../../repositories/authentication";
 import {AuthorizeResult} from "react-native-app-auth";
 
 describe("LoginScreen", () => {

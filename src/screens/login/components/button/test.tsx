@@ -3,11 +3,11 @@ import React from 'react';
 
 import renderer from 'react-test-renderer';
 import {mount, ReactWrapper} from "enzyme";
-import {LoginButtonStyles} from "../styles";
-import {LoginButtonProps} from "../props";
-import {LoginButtonView} from "../index";
-import {LoginScreen} from "../../../index";
-import {UserInitialState} from "../../../../../user-persistence/reducer";
+import {LoginButtonStyles} from "./styles";
+import {LoginButtonProps} from "./props";
+import {LoginButtonView} from "./index";
+import {LoginScreen} from "../../index";
+import {UserInitialState} from "../../../../user-persistence/reducer";
 
 const {
   TouchableOpacity,
