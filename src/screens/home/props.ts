@@ -1,11 +1,11 @@
-import {NewReleasesResponse} from "../../repositories/new-releases/response";
 import {RepositoryStatus} from "../../repositories/repository-status";
+import {ReleasesResponse} from "../../repositories/releases/response";
 
 export interface HomeScreenPropsActions {
-  getNewReleases: () => void;
+  getReleases: () => void;
 }
 
 export interface HomeScreenProps extends HomeScreenPropsActions {
-  newReleases: NewReleasesResponse[]
-  statusNewReleases: RepositoryStatus
+  newReleases: ReleasesResponse[]
+  statusReleases: RepositoryStatus
 }

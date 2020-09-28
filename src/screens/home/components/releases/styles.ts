@@ -1,10 +1,10 @@
 import styled from "styled-components/native";
 
-export const HomeRecommendedStyles = {
+export const HomeReleasesStyles = {
   ContainerView: styled.View`
 
   `,
-  RecommendedText: styled.Text`
+  ReleaseText: styled.Text`
 
   `,
   ScrollHorizontal: styled.ScrollView`
@@ -16,7 +16,7 @@ export const HomeRecommendedStyles = {
   CoverImage: styled.Image`
 
   `,
-  MusicNameText: styled.Text`
+  ReleaseNameText: styled.Text`
 
   `,
   ArtistNameText: styled.Text`

@@ -6,8 +6,8 @@ import {RepositoryStatus} from "../../../repositories/repository-status";
 
 export const HomeScreenInitialState: HomeScreenProps = {
   newReleases: [],
-  statusNewReleases: RepositoryStatus.LOADING,
-  getNewReleases: () => HomeScreenAction.getNewReleases()
+  statusReleases: RepositoryStatus.LOADING,
+  getReleases: () => HomeScreenAction.getReleases()
 };
 
 export const HomeScreenReducer: Reducer<HomeScreenProps | undefined, HomeScreenActionType> = (
@@ -15,17 +15,17 @@ export const HomeScreenReducer: Reducer<HomeScreenProps | undefined, HomeScreenA
   action
 ): HomeScreenProps => {
   switch (action.type) {
-    case HomeScreenActionConst.getNewReleases: {
+    case HomeScreenActionConst.getReleases: {
       return {
         ...state,
-        statusNewReleases: action.status
+        statusReleases: action.status
       }
     }
 
-    case HomeScreenActionConst.setNewReleases: {
+    case HomeScreenActionConst.setReleases: {
       return {
         ...state,
-        statusNewReleases: action.status,
+        statusReleases: action.status,
         newReleases: action.releases
       }
     }

@@ -5,20 +5,19 @@ import {HomeScreenProps, HomeScreenPropsActions} from "./props";
 import {bindActionCreators, Dispatch} from "redux";
 import {connect} from "react-redux";
 import {Container} from "../../components/container";
-import {HomeRecommendedView} from "./components/recommended";
-import {RepositoryStatus} from "../../repositories/repository-status";
 import {HomeScreenInitialState} from "./redux/reducer";
+import {HomeReleasesView} from "./components/releases";
 
 export class HomeScreen extends React.Component<HomeScreenProps> {
   componentDidMount() {
-    this.props.getNewReleases()
+    this.props.getReleases()
   }
 
   render() {
     return (
       <Container>
         <CustomHeader title={'Home'} placeholder={'Search album song'} />
-        <HomeRecommendedView status={this.props.statusNewReleases} />
+        <HomeReleasesView status={this.props.statusReleases} releases={this.props.newReleases} />
       </Container>
     );
   }
@@ -29,7 +28,7 @@ const mapStateToProps = (state: ReducersProps): HomeScreenProps => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): HomeScreenPropsActions => ({
-  getNewReleases: bindActionCreators(HomeScreenInitialState.getNewReleases, dispatch)
+  getReleases: bindActionCreators(HomeScreenInitialState.getReleases, dispatch)
 });
 
 export const HomeScreenRedux = connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

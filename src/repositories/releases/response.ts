@@ -1,4 +1,4 @@
-export class NewReleasesResponse {
+export class ReleasesResponse {
   name: string
   artistName: string
   imageUri: string
@@ -18,15 +18,15 @@ export class NewReleasesResponse {
     this.imageUri = images.length > 0 ? images[images.length - 1].url : ""
   }
 
-  static uriContent(value: NewReleasesResponseUriType): NewReleasesResponse[] {
-    const releases: NewReleasesResponse[] = []
+  static uriContent(value: ReleasesResponseUriType): ReleasesResponse[] {
+    const releases: ReleasesResponse[] = []
 
     value.albums.items.forEach(item => {
-      releases.push(new NewReleasesResponse(item))
+      releases.push(new ReleasesResponse(item))
     })
 
     return releases
   }
 }
 
-export type NewReleasesResponseUriType = {albums: {items: {[key: string]: string}[]}}
+export type ReleasesResponseUriType = {albums: {items: {[key: string]: string}[]}}

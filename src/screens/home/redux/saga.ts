@@ -1,20 +1,20 @@
 import {call, put, takeEvery} from '@redux-saga/core/effects'
-import {NewReleasesRepository} from "../../../repositories/new-releases";
-import {NewReleasesResponse} from "../../../repositories/new-releases/response";
 import {HomeScreenAction} from "./action";
 import {RepositoryStatus} from "../../../repositories/repository-status";
 import {HomeScreenActionConst} from "./action-type";
+import {ReleasesRepository} from "../../../repositories/releases";
+import {ReleasesResponse} from "../../../repositories/releases/response";
 
 function *getNewReleases() {
   try {
-    const result = yield call(NewReleasesRepository.getNewsReleases);
-    yield put(HomeScreenAction.setNewReleases(RepositoryStatus.SUCCESS, NewReleasesResponse.uriContent(result)))
+    const result = yield call(ReleasesRepository.getReleases);
+    yield put(HomeScreenAction.setReleases(RepositoryStatus.SUCCESS, ReleasesResponse.uriContent(result)))
   }
   catch(error) {
-    yield put(HomeScreenAction.setNewReleases(RepositoryStatus.FAILED, []))
+    yield put(HomeScreenAction.setReleases(RepositoryStatus.FAILED, []))
   }
 }
 
 export const HomeScreenSaga = [
-  takeEvery(HomeScreenActionConst.getNewReleases, getNewReleases)
+  takeEvery(HomeScreenActionConst.getReleases, getNewReleases)
 ];
