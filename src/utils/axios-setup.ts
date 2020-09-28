@@ -9,7 +9,6 @@ export const setupAxios = () => {
     let authorization: string
 
     if(config.url?.includes("token")) {
-      // const base64 = Base64.btoa((KEYS.clientID + ":" + KEYS.clientSecret))
       authorization = ""
     }
     else {

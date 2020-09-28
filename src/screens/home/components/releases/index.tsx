@@ -1,6 +1,7 @@
 import React from "react";
 import {HomeReleasesProps} from "./props";
 import {HomeReleasesState} from "./state";
+import {HomeReleasesStyles} from "./styles";
 
 export class HomeReleasesView extends React.Component<HomeReleasesProps, HomeReleasesState> {
 
@@ -13,10 +14,10 @@ export class HomeReleasesView extends React.Component<HomeReleasesProps, HomeRel
     } = HomeReleasesStyles
 
     return this.props.releases.map(release => (
-      <CardView>
+      <CardView key={release.name}>
         <CoverImage source={{uri: release.imageUri}} />
-        <ReleaseNameText>{release.name}</ReleaseNameText>
-        <ArtistNameText>{release.artistName}</ArtistNameText>
+        <ReleaseNameText numberOfLines={1}>{release.name}</ReleaseNameText>
+        <ArtistNameText numberOfLines={1}>{release.artistName}</ArtistNameText>
       </CardView>
     ));
   }
@@ -31,7 +32,7 @@ export class HomeReleasesView extends React.Component<HomeReleasesProps, HomeRel
     return (
       <ContainerView>
         <ReleaseText>Hot Releases</ReleaseText>
-        <ScrollHorizontal>
+        <ScrollHorizontal horizontal={true} >
           { this.getList() }
         </ScrollHorizontal>
       </ContainerView>

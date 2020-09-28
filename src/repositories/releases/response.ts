@@ -11,11 +11,11 @@ export class ReleasesResponse {
     const size = artists.length
 
     for(let i = 0; i < size; i++) {
-      this.artistName += artists[i].name
+      this.artistName += (artists[i].name + (i + 1 < size ? ", " : ""))
     }
 
     const images = value["images"]
-    this.imageUri = images.length > 0 ? images[images.length - 1].url : ""
+    this.imageUri = images.length > 0 ? images[0].url : ""
   }
 
   static uriContent(value: ReleasesResponseUriType): ReleasesResponse[] {

@@ -8,7 +8,9 @@ import {ReleasesResponse} from "../../../repositories/releases/response";
 function *getNewReleases() {
   try {
     const result = yield call(ReleasesRepository.getReleases);
-    yield put(HomeScreenAction.setReleases(RepositoryStatus.SUCCESS, ReleasesResponse.uriContent(result)))
+
+
+    yield put(HomeScreenAction.setReleases(RepositoryStatus.SUCCESS, ReleasesResponse.uriContent(result.data)))
   }
   catch(error) {
     yield put(HomeScreenAction.setReleases(RepositoryStatus.FAILED, []))

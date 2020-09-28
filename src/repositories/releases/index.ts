@@ -4,6 +4,10 @@ import {repositoriesUri} from "../repository-url";
 
 export class ReleasesRepository {
   static getReleases() {
-    return axios.get<ReleasesResponseUriType>(repositoriesUri.releases)
+    const data = new URLSearchParams({
+      limit: "6"
+    })
+
+    return axios.get<ReleasesResponseUriType>(repositoriesUri.releases + "?" + data)
   }
 }
