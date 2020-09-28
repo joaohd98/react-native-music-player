@@ -1,7 +1,7 @@
 import {RepositoryStatus} from "../../../../repositories/repository-status";
-import {ReleasesRepository} from "../../../../repositories/releases";
+import {ReleasesResponse} from "../../../../repositories/releases/response";
 
 export interface HomeReleasesProps {
-  releases: ReleasesRepository[]
+  releases: ReleasesResponse[]
   status: RepositoryStatus
 }
