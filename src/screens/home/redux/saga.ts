@@ -1,14 +1,20 @@
-import { put, takeEvery, takeLatest, call } from '@redux-saga/core/effects'
-import {HomeScreenActionType} from "./action-type";
+import {call, put, takeEvery} from '@redux-saga/core/effects'
+import {NewReleasesRepository} from "../../../repositories/new-releases";
+import {NewReleasesResponse} from "../../../repositories/new-releases/response";
+import {HomeScreenAction} from "./action";
+import {RepositoryStatus} from "../../../repositories/repository-status";
+import {HomeScreenActionConst} from "./action-type";
 
-// function *increaseGamesList() {
-//   // const result = yield call(() => );
-//   //
-//   // yield put(GamesPageAction.increaseGameListFinished(result));
-// }
+function *getNewReleases() {
+  try {
+    const result = yield call(NewReleasesRepository.getNewsReleases);
+    yield put(HomeScreenAction.setNewReleases(RepositoryStatus.SUCCESS, NewReleasesResponse.uriContent(result)))
+  }
+  catch(error) {
+    yield put(HomeScreenAction.setNewReleases(RepositoryStatus.FAILED, []))
+  }
+}
 
 export const HomeScreenSaga = [
-  // takeEvery(GamesPageActionConst.GAMES_FETCH_REQUESTED, getGames),
-  // takeLatest(GamesPageActionConst.GAMES_SEARCH_FINISHED_TYPING_REQUEST, getGames),
-  // takeEvery(GamesPageActionConst.GAMES_INCREASE_FETCH_REQUESTED, increaseGamesList),
+  takeEvery(HomeScreenActionConst.getNewReleases, getNewReleases)
 ];

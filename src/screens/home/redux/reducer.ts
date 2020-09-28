@@ -18,6 +18,14 @@ export const HomeScreenReducer: Reducer<HomeScreenProps | undefined, HomeScreenA
     case HomeScreenActionConst.getNewReleases: {
       return {
         ...state,
+        statusNewReleases: action.status
+      }
+    }
+
+    case HomeScreenActionConst.setNewReleases: {
+      return {
+        ...state,
+        statusNewReleases: action.status,
         newReleases: action.releases
       }
     }

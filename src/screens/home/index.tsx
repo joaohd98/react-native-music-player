@@ -10,11 +10,15 @@ import {RepositoryStatus} from "../../repositories/repository-status";
 import {HomeScreenInitialState} from "./redux/reducer";
 
 export class HomeScreen extends React.Component<HomeScreenProps> {
+  componentDidMount() {
+    this.props.getNewReleases()
+  }
+
   render() {
     return (
       <Container>
         <CustomHeader title={'Home'} placeholder={'Search album song'} />
-        <HomeRecommendedView status={RepositoryStatus.LOADING} />
+        <HomeRecommendedView status={this.props.statusNewReleases} />
       </Container>
     );
   }

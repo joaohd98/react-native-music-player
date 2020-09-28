@@ -7,5 +7,5 @@ export interface HomeScreenPropsActions {
 
 export interface HomeScreenProps extends HomeScreenPropsActions {
   newReleases: NewReleasesResponse[]
-  statusNewReleases: RepositoryStatus.
+  statusNewReleases: RepositoryStatus
 }

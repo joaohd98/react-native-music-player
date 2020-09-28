@@ -24,9 +24,9 @@ export class AuthenticationRepository  {
     authorize(this.spotifyAuthConfig).then(onSuccess).catch(onFailed)
   }
 
-  async refreshLogin(refreshToken: string, onSuccess: (res: AuthorizeResult) => void, onFailed: () => void) {
+  async refreshLogin(refreshToken: string) {
     return await refresh(this.spotifyAuthConfig, {
       refreshToken: refreshToken,
-    }).then();
+    });
   }
 }
