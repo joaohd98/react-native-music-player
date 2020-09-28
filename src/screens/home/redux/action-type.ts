@@ -1,10 +1,13 @@
 import {Action} from "redux";
+import {NewReleasesResponse} from "../../../repositories/new-releases/response";
 
 export enum HomeScreenActionConst {
-  todo
+  getNewReleases = "HomeScreenActionConst/getNewReleases"
 }
 
-interface Todo extends Action<HomeScreenActionConst.todo> {}
+interface GetNewReleases extends Action<HomeScreenActionConst.getNewReleases> {
+  type: HomeScreenActionConst.getNewReleases,
+  releases: NewReleasesResponse[]
+}
 
-export type HomeScreenActionType =
-  | Todo
+export type HomeScreenActionType = GetNewReleases

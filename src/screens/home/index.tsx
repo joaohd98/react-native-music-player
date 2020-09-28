@@ -1,12 +1,13 @@
 import React from 'react';
 import {CustomHeader} from '../../components/header';
 import {ReducersProps} from "../../redux/reducers";
-import {HomeScreenProps} from "./props";
-import {Dispatch} from "redux";
+import {HomeScreenProps, HomeScreenPropsActions} from "./props";
+import {bindActionCreators, Dispatch} from "redux";
 import {connect} from "react-redux";
 import {Container} from "../../components/container";
 import {HomeRecommendedView} from "./components/recommended";
 import {RepositoryStatus} from "../../repositories/repository-status";
+import {HomeScreenInitialState} from "./redux/reducer";
 
 export class HomeScreen extends React.Component<HomeScreenProps> {
   render() {
@@ -20,11 +21,11 @@ export class HomeScreen extends React.Component<HomeScreenProps> {
 }
 
 const mapStateToProps = (state: ReducersProps): HomeScreenProps => ({
-  ...state.homeScreen,
+  ...state.homeScreen!,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch): HomeScreenProps => ({
-  // getAllCard: bindActionCreators(ShowCardScreenInitial.getAllCard, dispatch),
+const mapDispatchToProps = (dispatch: Dispatch): HomeScreenPropsActions => ({
+  getNewReleases: bindActionCreators(HomeScreenInitialState.getNewReleases, dispatch)
 });
 
 export const HomeScreenRedux = connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
