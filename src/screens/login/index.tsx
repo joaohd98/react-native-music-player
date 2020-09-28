@@ -8,7 +8,7 @@ import {LoginButtonView} from "./components/button";
 import {LoginScreenProps} from "./props";
 import {bindActionCreators, Dispatch} from "redux";
 import {connect} from "react-redux";
-import {PropsReducers} from "../../redux/reducers";
+import {ReducersProps} from "../../redux/reducers";
 import {UserPropsActions} from "../../user-persistence/props";
 import {UserInitialState} from "../../user-persistence/reducer";
 
@@ -51,8 +51,8 @@ export class LoginScreen extends React.Component<LoginScreenProps, LoginScreenSt
   }
 }
 
-const mapStateToProps = (state: PropsReducers): LoginScreenProps => ({
-  ...state.UserProps
+const mapStateToProps = (state: ReducersProps): LoginScreenProps => ({
+  ...state.userProps!
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): UserPropsActions => ({

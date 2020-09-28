@@ -7,10 +7,13 @@ import {UserReducer} from "../user-persistence/reducer";
 import {UserProps} from "../user-persistence/props";
 import {UserActionType} from "../user-persistence/action-type";
 import {PersistConfig} from "redux-persist/es/types";
+import {HomeScreenActionType} from "../screens/home/redux/action-type";
 
-export interface PropsReducers {
-  UserProps: UserProps;
-  HomeScreen: HomeScreenProps;
+export type ActionsType = UserActionType | HomeScreenActionType
+
+export interface ReducersProps {
+  userProps?: UserProps;
+  homeScreen?: HomeScreenProps;
 }
 
 const persistConfig: PersistConfig<UserProps | undefined> = {
@@ -22,7 +25,7 @@ const persistConfig: PersistConfig<UserProps | undefined> = {
 const userPersistedReducer = persistReducer<UserProps | undefined, UserActionType>(persistConfig, UserReducer)
 
 export const Reducers = combineReducers({
-  UserProps: userPersistedReducer,
-  HomeScreen: HomeScreenReducer,
+  userProps: userPersistedReducer,
+  homeScreen: HomeScreenReducer,
 });
 

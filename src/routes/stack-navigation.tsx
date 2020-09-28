@@ -5,7 +5,7 @@ import {NavigationContainer} from "@react-navigation/native";
 import React from "react";
 import {UserProps} from "../user-persistence/props";
 import {useSelector} from "react-redux";
-import {PropsReducers} from "../redux/reducers";
+import {ReducersProps} from "../redux/reducers";
 import {CustomColors} from "../theme/colors";
 
 export type Routes = {
@@ -18,7 +18,7 @@ export type Routes = {
 const Stack = createNativeStackNavigator<Routes>();
 
 export const StackNavigation = () => {
-  const isLogged = useSelector<PropsReducers>(props => props.UserProps.isLogged)
+  const isLogged = useSelector<ReducersProps>(props => props.userProps?.isLogged)
   const initialRouteName = isLogged ? "TabsBottom" : "LoginScreen"
 
   const options: NativeStackNavigationOptions = {

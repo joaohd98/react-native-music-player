@@ -1,6 +1,6 @@
 import React from 'react';
 import {CustomHeader} from '../../components/header';
-import {PropsReducers} from "../../redux/reducers";
+import {ReducersProps} from "../../redux/reducers";
 import {HomeScreenProps} from "./props";
 import {Dispatch} from "redux";
 import {connect} from "react-redux";
@@ -19,8 +19,8 @@ export class HomeScreen extends React.Component<HomeScreenProps> {
   }
 }
 
-const mapStateToProps = (state: PropsReducers): HomeScreenProps => ({
-  ...state.HomeScreen,
+const mapStateToProps = (state: ReducersProps): HomeScreenProps => ({
+  ...state.homeScreen,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): HomeScreenProps => ({

@@ -4,7 +4,7 @@ import {HomeScreenActionType} from "./action-type";
 
 export const HomeScreenInitialState: HomeScreenProps = {};
 
-export const HomeScreenReducer: Reducer<HomeScreenProps, HomeScreenActionType> = (
+export const HomeScreenReducer: Reducer<HomeScreenProps | undefined, HomeScreenActionType> = (
   state = HomeScreenInitialState,
   action
 ): HomeScreenProps => {
