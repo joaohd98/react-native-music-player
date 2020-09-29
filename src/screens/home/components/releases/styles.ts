@@ -4,7 +4,9 @@ import {CustomColors} from "../../../../theme/colors";
 import {PercentageScreen} from "../../../../utils/percentage-screen";
 
 export const HomeReleasesStyles = {
-  ContainerView: styled.View``,
+  ContainerView: styled.View`
+    height: 270px;
+  `,
   ActivityIndicator: styled.ActivityIndicator`
     padding: 20px;
     justify-content: center;
@@ -44,5 +46,5 @@ export const HomeReleasesStyles = {
     font-family: ${CustomFonts.circularStdBold};
     color: ${CustomColors.blackSmooth};
     margin-top: 10px;
-  `,
+  `
 }

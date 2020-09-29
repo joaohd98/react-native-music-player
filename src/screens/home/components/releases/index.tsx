@@ -54,7 +54,7 @@ export class HomeReleasesView extends React.Component<HomeReleasesProps, HomeRel
   render() {
     const {
       ContainerView,
-      ReleaseText,
+      ReleaseText
     } = HomeReleasesStyles
 
     const getContent = {
