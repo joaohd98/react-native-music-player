@@ -4,10 +4,16 @@ import {HomeReleasesState} from "./state";
 import {HomeReleasesStyles} from "./styles";
 import {RepositoryStatus} from "../../../../repositories/repository-status";
 import {CustomColors} from "../../../../theme/colors";
+import {TryAgainView} from "../../../../components/try-again";
 
 export class HomeReleasesView extends React.Component<HomeReleasesProps, HomeReleasesState> {
   getFailed() {
-    return <></>
+    return (
+      <TryAgainView
+        text={"It was not possible to get the releases"}
+        onPress={this.props.onTryAgain}
+      />
+    )
   }
 
   getLoading() {

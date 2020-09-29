@@ -2,7 +2,7 @@ import React from "react";
 import {TryAgainProps} from "./props";
 import {TryAgainStyle} from "./styles";
 
-export class TryAgain extends React.Component<TryAgainProps> {
+export class TryAgainView extends React.Component<TryAgainProps> {
   render() {
     const {
       ContainerView,

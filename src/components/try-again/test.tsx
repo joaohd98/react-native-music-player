@@ -3,7 +3,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {mount, ReactWrapper} from "enzyme";
 import {TryAgainProps} from "./props";
-import {TryAgain} from "./index";
+import {TryAgainView} from "./index";
 import {TryAgainStyle} from "./styles";
 
 const {
@@ -18,11 +18,11 @@ describe('TryAgain', () => {
   let tryAgain: ReactWrapper<TryAgainProps, {}>;
 
   beforeEach(() => {
-    tryAgain = mount(<TryAgain text={""} onPress={() => {}} />)
+    tryAgain = mount(<TryAgainView text={""} onPress={() => {}} />)
   })
 
   it('renders correctly', () => {
-    renderer.create(<TryAgain text={""} onPress={() => {}} />);
+    renderer.create(<TryAgainView text={""} onPress={() => {}} />);
   });
 
   it('should render text', () => {

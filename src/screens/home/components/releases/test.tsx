@@ -9,6 +9,8 @@ import {HomeReleasesProps} from "./props";
 import {HomeReleasesState} from "./state";
 import {ReleasesResponse} from "../../../../repositories/releases/response";
 import {HomeReleasesStyles} from "./styles";
+import {HomeScreen} from "../../index";
+import {TryAgainView} from "../../../../components/try-again";
 
 const {
   ContainerView,
@@ -26,7 +28,7 @@ describe('HomeReleasesView', () => {
   let releasesMock: ReleasesResponse[]
 
   beforeEach(() => {
-    releaseView = mount(<HomeReleasesView status={RepositoryStatus.NONE} releases={[]} />)
+    releaseView = mount(<HomeReleasesView status={RepositoryStatus.NONE} releases={[]} onTryAgain={() => {}}/>)
     releasesMock = []
 
     for(let i = 0; i < 10; i++) {
@@ -38,16 +40,16 @@ describe('HomeReleasesView', () => {
     }
   })
 
+  it('renders correctly', () => {
+    renderer.create(<HomeReleasesView status={RepositoryStatus.NONE} releases={[]} onTryAgain={() => {}}/>);
+  });
+
   describe("onSuccess", () => {
     beforeEach(() => {
       releaseView.setProps({
         status: RepositoryStatus.SUCCESS
       })
     })
-
-    it('renders correctly', () => {
-      renderer.create(<HomeReleasesView status={RepositoryStatus.NONE} releases={[]} />);
-    });
 
     it('renders all views', () => {
       const activityIndicator = releaseView.find(ActivityIndicator)
@@ -98,4 +100,33 @@ describe('HomeReleasesView', () => {
       expect(activityIndicator).toHaveLength(1)
     })
   })
+
+  describe("onFailed", () => {
+    beforeEach(() => {
+      releaseView.setProps({
+        status: RepositoryStatus.FAILED
+      })
+    })
+
+    it("should show 'tryAgainView'", () => {
+      const tryAgain = releaseView.find(TryAgainView)
+
+      expect(tryAgain).toHaveLength(1)
+    })
+
+    it("check 'onTryAgain' is on 'tryAgainView'", () => {
+      const onTryAgain = () => {
+        return "abc123"
+      }
+
+      releaseView.setProps({
+        onTryAgain
+      })
+
+      const tryAgainView = releaseView.find(TryAgainView)
+
+      expect(tryAgainView.prop("onPress")()).toStrictEqual(onTryAgain())
+    })
+  })
+
 })

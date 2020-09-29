@@ -17,7 +17,7 @@ export class HomeScreen extends React.Component<HomeScreenProps> {
     return (
       <Container>
         <CustomHeader title={'Home'} placeholder={'Search album song'} />
-        <HomeReleasesView status={this.props.statusReleases} releases={this.props.newReleases} />
+        <HomeReleasesView status={this.props.statusReleases} releases={this.props.newReleases} onTryAgain={this.props.getReleases} />
       </Container>
     );
   }
