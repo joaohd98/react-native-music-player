@@ -49,7 +49,6 @@ export const setupAxios = () => {
     const code = error.response.status
 
     if(code == 401) {
-
       try {
         const config = error.config
 

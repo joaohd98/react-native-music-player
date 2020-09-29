@@ -4,7 +4,10 @@ import {CustomColors} from "../../../../theme/colors";
 import {PercentageScreen} from "../../../../utils/percentage-screen";
 
 export const HomeReleasesStyles = {
-  ContainerView: styled.View`
+  ContainerView: styled.View``,
+  ActivityIndicator: styled.ActivityIndicator`
+    padding: 20px;
+    justify-content: center;
   `,
   ReleaseText: styled.Text`
     margin-horizontal: 22px;
@@ -24,9 +27,10 @@ export const HomeReleasesStyles = {
   `,
   CoverImage: styled.Image`
     height: 125px;
-    width: ${PercentageScreen.getWidth(60)};
+    width: 100%;
     border-radius: 20px;
-    border: 3px rgba(255, 255, 255, .2);
+    border-color: rgba(255, 255, 255, .1);
+    border-width: 3px;
   `,
   ReleaseNameText: styled.Text`
     font-size: 16px;
