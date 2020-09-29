@@ -25,8 +25,8 @@ export const HomeReleasesStyles = {
   CoverImage: styled.Image`
     height: 125px;
     width: ${PercentageScreen.getWidth(60)};
-    border-radius: 10px;
-    border: 1px solid ${CustomColors.white}
+    border-radius: 20px;
+    border: 3px rgba(255, 255, 255, .2);
   `,
   ReleaseNameText: styled.Text`
     font-size: 16px;

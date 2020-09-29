@@ -31,7 +31,6 @@ export class AuthenticationRepository  {
     return await axios.post<{access_token: string, refresh_token: string}>("https://accounts.spotify.com/api/token", {
       grant_type: "refresh_token",
       refresh_token: refreshToken,
-      client_id: KEYS.clientID
     })
   }
 }
