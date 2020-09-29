@@ -9,7 +9,7 @@ import {TryAgainStyle} from "./styles";
 const {
   ContainerView,
   FirstLineText,
-  SecondsLineText,
+  SecondLineText,
   TouchableButton,
   TouchableText
 } = TryAgainStyle
@@ -31,7 +31,7 @@ describe('TryAgain', () => {
       text
     })
 
-    const secondsLineText = tryAgain.find(SecondsLineText)
+    const secondsLineText = tryAgain.find(SecondLineText)
 
     expect(secondsLineText.text()).toBe(text)
   });

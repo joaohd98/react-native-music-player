@@ -13,7 +13,7 @@ export const TryAgainStyle  = {
     color: ${CustomColors.white};
     text-align: center;
   `,
-  SecondsLineText: styled.Text`
+  SecondLineText: styled.Text`
     font-size: 14px;
     font-family: ${CustomFonts.circularStdMedium};
     color: ${CustomColors.white};
