@@ -2,13 +2,10 @@ import React from "react";
 import {UriImageProps} from "./props";
 import {UriImageState} from "./state";
 import {UriImageStyles} from "./styles";
-import {Animated} from "react-native";
 import {CustomColors} from "../../theme/colors";
 
 export class UriImage extends React.Component<UriImageProps, UriImageState> {
   state: UriImageState = {
-    animatedError: new Animated.Value(0),
-    animatedLoading: new Animated.Value(0),
     hasError: false,
     isLoading: true,
     uri: this.props.uri
@@ -47,7 +44,6 @@ export class UriImage extends React.Component<UriImageProps, UriImageState> {
         <Image
           key={this.state.uri}
           isLoadingOrError={this.state.hasError || this.state.isLoading}
-          style={this.props.style}
           source={{uri: this.state.uri}}
           onLoadStart={this.onStartLoading}
           onLoadEnd={this.onEndLoading}

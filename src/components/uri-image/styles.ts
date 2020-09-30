@@ -1,10 +1,6 @@
 import styled from 'styled-components/native';
 import {ActivityIndicator, Animated} from "react-native";
 import {IconRetry} from "../../../assets/images/icon-retry";
-import {IconClose} from "../../../assets/images/icon-close";
-import {CustomColors} from "../../theme/colors";
-
-const animatedIndicator = Animated.createAnimatedComponent(ActivityIndicator)
 
 export const UriImageStyles = {
   Container: styled.View`
@@ -12,10 +8,10 @@ export const UriImageStyles = {
     border-color: rgba(255, 255, 255, .1);
     border-width: 3px;
   `,
-  Image: styled(Animated.Image)<{isLoadingOrError: boolean}>`
+  Image: styled.Image<{isLoadingOrError: boolean}>`
     opacity: ${props => props.isLoadingOrError ? 0 : 1};
   `,
-  ActivityIndicator: styled(animatedIndicator)<{isLoading: boolean}>`
+  ActivityIndicator: styled.ActivityIndicator<{isLoading: boolean}>`
     opacity: ${props => props.isLoading ? 1: 0};
     position: absolute;
     left: 0;
