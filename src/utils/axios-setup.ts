@@ -48,6 +48,8 @@ export const setupAxios = () => {
   }, async (error) => {
     const code = error.response.status
 
+    console.log("error", error)
+
     if(code == 401) {
       try {
         const config = error.config

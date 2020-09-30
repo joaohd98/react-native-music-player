@@ -40,7 +40,7 @@ export class HomeReleasesView extends React.Component<HomeReleasesProps, HomeRel
         {
           this.props.releases.map(release => (
             <CardView key={release.name}>
-              <CoverImage source={{uri: release.imageUri}} />
+              <CoverImage uri={release.imageUri} />
               <ReleaseNameText numberOfLines={1}>{release.name}</ReleaseNameText>
               <ArtistNameText numberOfLines={1}>{release.artistName}</ArtistNameText>
             </CardView>

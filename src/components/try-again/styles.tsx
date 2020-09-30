@@ -4,8 +4,10 @@ import {CustomFonts} from "../../theme/fonts";
 
 export const TryAgainStyle  = {
   ContainerView: styled.View`
+    flex: 1;
     padding: 20px;
     align-items: center;
+    justify-content: center;
   `,
   FirstLineText: styled.Text`
     font-size: 16px;

@@ -2,12 +2,14 @@ import styled from "styled-components/native";
 import {CustomFonts} from "../../../../theme/fonts";
 import {CustomColors} from "../../../../theme/colors";
 import {PercentageScreen} from "../../../../utils/percentage-screen";
+import {UriImage} from "../../../../components/uri-image";
 
 export const HomeReleasesStyles = {
   ContainerView: styled.View`
     height: 270px;
   `,
   ActivityIndicator: styled.ActivityIndicator`
+    flex: 1;
     padding: 20px;
     justify-content: center;
   `,
@@ -27,7 +29,7 @@ export const HomeReleasesStyles = {
     width: ${PercentageScreen.getWidth(60)};
     margin-right: 30px;
   `,
-  CoverImage: styled.Image`
+  CoverImage: styled(UriImage)`
     height: 125px;
     width: 100%;
     border-radius: 20px;
