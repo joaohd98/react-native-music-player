@@ -30,6 +30,11 @@ describe('UriImage', () => {
     renderer.create(<UriImage  {...initialProps} />);
   });
 
+  it('should has uri on image', () => {
+    const image = uriImage.find(Image)
+    expect(image.prop("source").uri).toBe(initialProps.uri)
+  });
+
   it("initial show loading", () => {
     const image = uriImage.find(Image)
     const activityIndicator = uriImage.find(ActivityIndicator)
@@ -65,7 +70,6 @@ describe('UriImage', () => {
     const activityIndicator = uriImage.find(ActivityIndicator)
     const errorView = uriImage.find(ErrorView)
 
-    expect(image.prop("source").uri).toBe(initialProps.uri)
     expect(image.prop("isLoadingOrError")).toBe(false)
     expect(activityIndicator.prop("isLoading")).toBe(false)
     expect(errorView.prop("hasError")).toBe(false)
@@ -99,7 +103,12 @@ describe('UriImage', () => {
     image.prop("onError")()
     checkState(false, true)
 
-    touchable.simulate("click")
-    expect(uriImage.state("uri")).not.toBe(initialProps.uri)
+    let uri = initialProps.uri
+    for(let i = 0; i < 10; i++) {
+      touchable.simulate("click")
+      expect(uriImage.state("uri")).not.toBe(uri)
+
+      uri = uriImage.state("uri")
+    }
   })
 })

@@ -78,7 +78,7 @@ describe('HomeReleasesView', () => {
         const releaseNameText = card.find(ReleaseNameText)
         const artistNameText = card.find(ArtistNameText)
 
-        expect(coverImage.prop("source").uri).toBe(mock.imageUri)
+        expect(coverImage.prop("uri")).toBe(mock.imageUri)
         expect(artistNameText.text()).toBe(mock.artistName)
         expect(releaseNameText.text()).toBe(mock.name)
       }
