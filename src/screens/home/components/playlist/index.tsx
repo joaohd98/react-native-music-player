@@ -4,14 +4,11 @@ import {HomePlaylistState} from "./state";
 import {HomePlaylistStyle} from "./styles";
 import {RepositoryStatus} from "../../../../repositories/repository-status";
 import {CustomColors} from "../../../../theme/colors";
+import {TryAgainView} from "../../../../components/try-again";
 
 export class HomePlaylistView extends React.Component<HomePlaylistProps, HomePlaylistState> {
 
   getTryAgain() {
-    const {
-      TryAgainView,
-    } = HomePlaylistStyle
-
     return <TryAgainView text={"It was not possible to get the playlist"} onPress={this.props.onTryAgain} />
   }
 
@@ -35,9 +32,9 @@ export class HomePlaylistView extends React.Component<HomePlaylistProps, HomePla
       <ScrollHorizontal horizontal={true}>
         {
           this.props.playlists.map(playlist => (
-            <PlaylistCard>
+            <PlaylistCard key={playlist.name}>
               <PlaylistCardImage uri={playlist.imageUri} />
-              <PlaylistCardNameText>{playlist.name}</PlaylistCardNameText>
+              <PlaylistCardNameText numberOfLines={1}>{playlist.name}</PlaylistCardNameText>
             </PlaylistCard>
           ))
         }
@@ -49,6 +46,7 @@ export class HomePlaylistView extends React.Component<HomePlaylistProps, HomePla
     const {
       ContainerView,
       TitleText,
+      TopView,
       ViewAllTouchable,
       ViewAllText,
     } = HomePlaylistStyle
@@ -62,11 +60,13 @@ export class HomePlaylistView extends React.Component<HomePlaylistProps, HomePla
 
     return (
       <ContainerView>
-        <TitleText>Playlist</TitleText>
-        <ViewAllTouchable>
-          <ViewAllText>View All</ViewAllText>
-          { getContent[this.props.status] }
-        </ViewAllTouchable>
+        <TopView>
+          <TitleText>Playlist</TitleText>
+          <ViewAllTouchable>
+            <ViewAllText>View All</ViewAllText>
+          </ViewAllTouchable>
+        </TopView>
+        { getContent[this.props.status] }
       </ContainerView>
     )
   }

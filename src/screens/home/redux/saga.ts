@@ -34,5 +34,5 @@ export class HomeSaga {
 
 export const HomeScreenSaga = [
   takeEvery(HomeScreenActionConst.getReleases, HomeSaga.getNewReleases),
-  takeEvery(HomeScreenAction.setReleases, HomeSaga.getFeaturedPlaylist)
+  takeEvery(HomeScreenActionConst.getFeaturedPlaylists, HomeSaga.getFeaturedPlaylist)
 ];
