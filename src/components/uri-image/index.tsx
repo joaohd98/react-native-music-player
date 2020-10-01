@@ -43,6 +43,8 @@ export class UriImage extends React.Component<UriImageProps, UriImageState> {
       <Container>
         <Image
           key={this.state.uri}
+          style={this.props.style}
+          resizeMode={"stretch"}
           isLoadingOrError={this.state.hasError || this.state.isLoading}
           source={{uri: this.state.uri}}
           onLoadStart={this.onStartLoading}

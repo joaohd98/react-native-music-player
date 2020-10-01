@@ -3,18 +3,18 @@ export class ReleasesResponse {
   artistName: string
   imageUri: string
 
-  constructor(value: {[key: string]: any}) {
-    this.name = value["name"]
+  constructor(content: ReleasesResponseUriContentType) {
+    this.name = content.name
 
     this.artistName = ""
-    const artists = value["artists"]
+    const artists = content.artists
     const size = artists.length
 
     for(let i = 0; i < size; i++) {
       this.artistName += (artists[i].name + (i + 1 < size ? ", " : ""))
     }
 
-    const images = value["images"]
+    const images = content.images
     this.imageUri = images.length > 0 ? images[0].url : ""
   }
 
@@ -29,4 +29,15 @@ export class ReleasesResponse {
   }
 }
 
-export type ReleasesResponseUriType = {albums: {items: {[key: string]: string}[]}}
+export type ReleasesResponseUriType = {
+  albums: {
+    items: ReleasesResponseUriContentType[]
+  }
+}
+
+
+export type ReleasesResponseUriContentType = {
+  name: string;
+  artists: { name: string }[],
+  images: {url: string}[]
+}

@@ -9,6 +9,7 @@ import {HomeScreenActionType} from "../screens/home/redux/action-type";
 import {UserProps} from "../user-persistence/props";
 import {Reducer} from "react";
 import {HomeScreenProps} from "../screens/home/props";
+import {ALL_SAGA} from "../redux/saga";
 
 
 export const storeFactory = (): Store<CombinedState<ReducersProps>, ActionsType> => {
@@ -27,5 +28,8 @@ export const storeFactory = (): Store<CombinedState<ReducersProps>, ActionsType>
 
   const saga = createSagaMiddleware();
 
-  return createStore(reducers, initialStore, applyMiddleware(saga));
+  const store = createStore(reducers, initialStore, applyMiddleware(saga));
+  saga.run(ALL_SAGA)
+
+  return store
 }

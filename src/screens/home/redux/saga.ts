@@ -5,18 +5,19 @@ import {HomeScreenActionConst} from "./action-type";
 import {ReleasesRepository} from "../../../repositories/releases";
 import {ReleasesResponse} from "../../../repositories/releases/response";
 
-function *getNewReleases() {
-  try {
-    const result = yield call(ReleasesRepository.getReleases);
-
-
-    yield put(HomeScreenAction.setReleases(RepositoryStatus.SUCCESS, ReleasesResponse.uriContent(result.data)))
-  }
-  catch(error) {
-    yield put(HomeScreenAction.setReleases(RepositoryStatus.FAILED, []))
+export class HomeSaga {
+  static *getNewReleases() {
+    try {
+      const result = yield call(ReleasesRepository.getReleases);
+      yield put(HomeScreenAction.setReleases(RepositoryStatus.SUCCESS, ReleasesResponse.uriContent(result.data)))
+    }
+    catch(error) {
+      yield put(HomeScreenAction.setReleases(RepositoryStatus.FAILED, []))
+    }
   }
 }
 
+
 export const HomeScreenSaga = [
-  takeEvery(HomeScreenActionConst.getReleases, getNewReleases)
+  takeEvery(HomeScreenActionConst.getReleases, HomeSaga.getNewReleases)
 ];
