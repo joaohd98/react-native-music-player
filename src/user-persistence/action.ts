@@ -6,6 +6,12 @@ type Response = UserActionType;
 export class UserAction {
   static saveUser = (authorize: AuthorizeResult): Response => ({
     type: UserActionConst.saveUser,
-    authorize: authorize
+    authorize
+  });
+
+  static refreshTokens = (token: string, refreshToken: string): Response => ({
+    type: UserActionConst.refreshTokens,
+    token,
+    refreshToken
   });
 }

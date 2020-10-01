@@ -24,6 +24,14 @@ export const UserReducer: Reducer<UserProps | undefined, UserActionType> = (
       }
     }
 
+    case UserActionConst.refreshTokens: {
+      return {
+        ...state,
+        token: action.token,
+        refreshToken: action.refreshToken
+      }
+    }
+
     default: return state ;
   }
 };

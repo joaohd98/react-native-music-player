@@ -3,6 +3,8 @@ import {STORE} from "../redux/store";
 import {AuthenticationRepository} from "../repositories/authentication";
 import {KEYS} from "../../keys";
 import {Base64} from "./base64";
+import {UserAction} from "../user-persistence/action";
+import {UserActionConst} from "../user-persistence/action-type";
 
 const configRequest = (config: AxiosRequestConfig, token: string = STORE.getState().userProps.token) => {
   let authorization: string
@@ -23,28 +25,31 @@ const configRequest = (config: AxiosRequestConfig, token: string = STORE.getStat
   config.data = new URLSearchParams(config.data);
 }
 
-const configRefreshToken = async (config: AxiosResponse) => {
-  const refreshToken = STORE.getState().userProps.refreshToken
+const configRefreshToken = async () => {
   const repository = new AuthenticationRepository()
-  const result = await repository.refreshLogin(refreshToken)
+  const result = await repository.refreshLogin(STORE.getState().userProps.refreshToken)
 
-  STORE.getState().userProps.token = result.data.access_token!
-  STORE.getState().userProps.refreshToken = result.data.refresh_token
+  const {access_token, refresh_token} = result.data!
 
-  return result.data.access_token
+  STORE.dispatch({
+    type: UserActionConst.refreshTokens,
+    token: access_token,
+    refreshToken: refresh_token
+  })
+
+  return access_token
 }
 
 export const setupAxios = () => {
   axios.interceptors.request.use((config) => {
     configRequest(config)
-
     return config;
   }, (error) => {
     return Promise.reject(error);
   });
 
-  axios.interceptors.response.use((config) => {
-    return config;
+  axios.interceptors.response.use(async (response) => {
+    return response;
   }, async (error) => {
     const code = error.response.status
 
@@ -54,7 +59,7 @@ export const setupAxios = () => {
       try {
         const config = error.config
 
-        const token = await configRefreshToken(config)
+        const token = await configRefreshToken()
         configRequest(config, token)
 
         return axios.request(config);

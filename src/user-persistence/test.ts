@@ -45,4 +45,24 @@ describe("UserPersistence", () => {
     const state = store.getState().userProps
     expect(state).toStrictEqual(exceptedState)
   });
+
+  it("call 'refreshTokens' from props", () => {
+    const token = "token"
+    const refreshToken = "refreshToken"
+
+    const exceptedState: UserProps = {
+      ...UserInitialState,
+      token: token,
+      refreshToken: refreshToken
+    };
+
+    store.dispatch({
+      type: UserActionConst.refreshTokens,
+      token,
+      refreshToken,
+    })
+
+    const state = store.getState().userProps
+    expect(state).toStrictEqual(exceptedState)
+  });
 })
