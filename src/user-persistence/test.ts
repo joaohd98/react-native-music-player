@@ -12,12 +12,6 @@ describe("UserPersistence", () => {
     store = storeFactory();
   });
 
-  it('should be initial state', () => {
-    const state = store.getState().userProps
-
-    expect(state).toStrictEqual(UserInitialState)
-  });
-
   it("call 'saveUser' from props", () => {
     const token = "token"
     const refreshToken = "refreshToken"
@@ -65,4 +59,5 @@ describe("UserPersistence", () => {
     const state = store.getState().userProps
     expect(state).toStrictEqual(exceptedState)
   });
+
 })
