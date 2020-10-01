@@ -6,8 +6,11 @@ import {RepositoryStatus} from "../../../repositories/repository-status";
 
 export const HomeScreenInitialState: HomeScreenProps = {
   newReleases: [],
+  playlists: [],
   statusReleases: RepositoryStatus.LOADING,
-  getReleases: () => HomeScreenAction.getReleases()
+  statusPlaylists: RepositoryStatus.LOADING,
+  getReleases: () => HomeScreenAction.getReleases(),
+  getFeaturedPlaylists: () => HomeScreenAction.getFeaturedPlaylists()
 };
 
 export const HomeScreenReducer: Reducer<HomeScreenProps | undefined, HomeScreenActionType> = (
@@ -27,6 +30,21 @@ export const HomeScreenReducer: Reducer<HomeScreenProps | undefined, HomeScreenA
         ...state,
         statusReleases: action.status,
         newReleases: action.releases
+      }
+    }
+
+    case HomeScreenActionConst.getFeaturedPlaylists: {
+      return {
+        ...state,
+        statusPlaylists: action.status,
+      }
+    }
+
+    case HomeScreenActionConst.setFeaturedPlaylists: {
+      return {
+        ...state,
+        statusPlaylists: action.status,
+        playlists: action.playlists
       }
     }
 

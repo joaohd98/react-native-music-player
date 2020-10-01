@@ -1,6 +1,7 @@
 import {HomeScreenActionConst, HomeScreenActionType} from "./action-type";
 import {RepositoryStatus} from "../../../repositories/repository-status";
 import {ReleasesResponse} from "../../../repositories/releases/response";
+import {FeaturedPlaylistResponse} from "../../../repositories/playlist/response";
 
 type Response = HomeScreenActionType;
 
@@ -15,4 +16,16 @@ export class HomeScreenAction {
     status,
     releases
   });
+
+  static getFeaturedPlaylists = (): Response => ({
+    type: HomeScreenActionConst.getFeaturedPlaylists,
+    status: RepositoryStatus.LOADING
+  });
+
+  static setFeaturedPlaylists = (status: RepositoryStatus, playlists: FeaturedPlaylistResponse[]): Response => ({
+    type: HomeScreenActionConst.setFeaturedPlaylists,
+    status,
+    playlists
+  });
+
 }

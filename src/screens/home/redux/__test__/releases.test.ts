@@ -1,21 +1,21 @@
 import 'react-native';
 import {AnyAction, CombinedState, Store} from "redux";
-import {ActionsType, ReducersProps} from "../../../redux/reducers";
-import {storeFactory} from "../../../utils/redux-test";
-import {HomeScreenProps} from "../props";
-import {HomeScreenInitialState, HomeScreenReducer} from "./reducer";
-import {RepositoryStatus} from "../../../repositories/repository-status";
-import {HomeScreenActionConst} from "./action-type";
+import {ActionsType, ReducersProps} from "../../../../redux/reducers";
+import {storeFactory} from "../../../../utils/redux-test";
+import {HomeScreenProps} from "../../props";
+import {HomeScreenInitialState, HomeScreenReducer} from "../reducer";
+import {RepositoryStatus} from "../../../../repositories/repository-status";
+import {HomeScreenActionConst} from "../action-type";
 import {
   ReleasesResponse,
   ReleasesResponseUriContentType,
   ReleasesResponseUriType
-} from "../../../repositories/releases/response";
+} from "../../../../repositories/releases/response";
 import {expectSaga} from "redux-saga-test-plan";
-import {HomeSaga} from "./saga";
+import {HomeSaga} from "../saga";
 import {call} from "@redux-saga/core/effects";
-import {ReleasesRepository} from "../../../repositories/releases";
-import {HomeScreenAction} from "./action";
+import {ReleasesRepository} from "../../../../repositories/releases";
+import {HomeScreenAction} from "../action";
 import {Reducer} from "react";
 
 const getHomeScreenProps = (store: Store<CombinedState<ReducersProps>, ActionsType>): HomeScreenProps => {
@@ -57,42 +57,6 @@ describe('HomeReleasesRedux', () => {
     store.dispatch({
       type: HomeScreenActionConst.getReleases,
       status: RepositoryStatus.LOADING
-    })
-
-    expect(getHomeScreenProps(store)).toStrictEqual(exceptedState)
-  });
-
-  it('action "setReleases" success', () => {
-    const releases = getReleases()
-
-    const exceptedState: HomeScreenProps = {
-      ...HomeScreenInitialState,
-      statusReleases: RepositoryStatus.SUCCESS,
-      newReleases: releases
-    };
-
-    store.dispatch({
-      type: HomeScreenActionConst.setReleases,
-      status: RepositoryStatus.SUCCESS,
-      releases: releases
-    })
-
-    expect(getHomeScreenProps(store)).toStrictEqual(exceptedState)
-  });
-
-  it('action "setReleases" failed', () => {
-    const releases: ReleasesResponse[] = []
-
-    const exceptedState: HomeScreenProps = {
-      ...HomeScreenInitialState,
-      statusReleases: RepositoryStatus.FAILED,
-      newReleases: releases
-    };
-
-    store.dispatch({
-      type: HomeScreenActionConst.setReleases,
-      status: RepositoryStatus.FAILED,
-      releases: releases
     })
 
     expect(getHomeScreenProps(store)).toStrictEqual(exceptedState)
