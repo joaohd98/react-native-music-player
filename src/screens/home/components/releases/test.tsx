@@ -9,7 +9,6 @@ import {HomeReleasesProps} from "./props";
 import {HomeReleasesState} from "./state";
 import {ReleasesResponse} from "../../../../repositories/releases/response";
 import {HomeReleasesStyles} from "./styles";
-import {HomeScreen} from "../../index";
 import {TryAgainView} from "../../../../components/try-again";
 
 const {

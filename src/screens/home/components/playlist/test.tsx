@@ -9,6 +9,7 @@ import {HomePlaylistProps} from "./props";
 import {FeaturedPlaylistResponse} from "../../../../repositories/playlist/response";
 import {HomePlaylistView} from "./index";
 import {HomePlaylistStyle} from "./styles";
+import {TryAgainView} from "../../../../components/try-again";
 
 const {
   ContainerView,
@@ -20,7 +21,6 @@ const {
   PlaylistCardImage,
   PlaylistCardNameText,
   ActivityIndicator,
-  TryAgainView
 } = HomePlaylistStyle
 
 describe("HomePlaylistView", () => {
