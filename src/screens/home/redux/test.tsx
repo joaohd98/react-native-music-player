@@ -63,12 +63,12 @@ describe('HomeRedux', () => {
   it('action "getReleases"', () => {
     const exceptedState: HomeScreenProps = {
       ...HomeScreenInitialState,
-      statusPlaylists: RepositoryStatus.LOADING,
-      playlists: []
+      statusReleases: RepositoryStatus.LOADING,
+      newReleases: []
     };
 
     store.dispatch({
-      type: HomeScreenActionConst.getFeaturedPlaylists,
+      type: HomeScreenActionConst.getReleases,
       status: RepositoryStatus.LOADING
     })
 
