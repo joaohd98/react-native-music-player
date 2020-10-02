@@ -22,14 +22,14 @@ import {
 } from "../../../repositories/releases/response";
 import {storeFactory} from "../../../utils/redux-test";
 import {Reducer} from "react";
-import {HomeSaga} from "./saga";
+import {HomeScreenSaga, watchSagaHome} from "./saga";
 import {call} from "@redux-saga/core/effects";
 import {ReleasesRepository} from "../../../repositories/releases";
 import {HomeScreenAction} from "./action";
 import {SongsRepository} from "../../../repositories/songs";
 import {PlaylistRepository} from "../../../repositories/playlist";
 import {AxiosResponse} from "axios";
-import {expectSaga, SagaType} from "redux-saga-test-plan";
+import {expectSaga, SagaType, testSaga} from "redux-saga-test-plan";
 
 const getHomeScreenProps = (store: Store<CombinedState<ReducersProps>, ActionsType>): HomeScreenProps => {
   return store.getState().homeScreen!
@@ -54,7 +54,6 @@ function sagaFactory<T>(
 
 describe('HomeRedux', () => {
   let store: Store<CombinedState<ReducersProps>, ActionsType>;
-  const homeReducer = HomeScreenReducer as Reducer<HomeScreenProps | undefined, AnyAction>
 
   beforeEach(() => {
     store = storeFactory();
@@ -105,6 +104,17 @@ describe('HomeRedux', () => {
     expect(getHomeScreenProps(store)).toStrictEqual(exceptedState)
   });
 
+  it('should call saga on dispatch', function () {
+    testSaga(watchSagaHome)
+      .next()
+      .takeEvery(HomeScreenActionConst.getReleases, HomeScreenSaga.getNewReleases)
+      .next()
+      .takeEvery(HomeScreenActionConst.getFeaturedPlaylists, HomeScreenSaga.getFeaturedPlaylist)
+      .next()
+      .takeEvery(HomeScreenActionConst.getRecentsSong, HomeScreenSaga.getRecentsSong)
+      .next()
+  });
+
   describe("saga call 'releases'", () => {
     const releases: ReleasesResponse[] = []
 
@@ -130,7 +140,7 @@ describe('HomeRedux', () => {
       const response = ReleasesResponse.uriContent(releasesUri)
 
       return sagaFactory<ReleasesResponseUriType>(
-        HomeSaga.getNewReleases,
+        HomeScreenSaga.getNewReleases,
         [ReleasesRepository.getReleases, releasesUri],
         HomeScreenAction.setReleases(RepositoryStatus.SUCCESS, response),
         {
@@ -143,7 +153,7 @@ describe('HomeRedux', () => {
 
     it("saga 'getNewReleases' failed", () => {
       return sagaFactory<ReleasesResponseUriType>(
-        HomeSaga.getNewReleases,
+        HomeScreenSaga.getNewReleases,
         [ReleasesRepository.getReleases, undefined],
         HomeScreenAction.setReleases(RepositoryStatus.FAILED, []),
         {
@@ -178,7 +188,7 @@ describe('HomeRedux', () => {
       const response = FeaturedPlaylistResponse.uriContent(releasesUri)
 
       return sagaFactory<FeaturedPlaylistResponseUriType>(
-        HomeSaga.getFeaturedPlaylist,
+        HomeScreenSaga.getFeaturedPlaylist,
         [PlaylistRepository.getFeaturedPlaylist, releasesUri],
         HomeScreenAction.setFeaturedPlaylists(RepositoryStatus.SUCCESS, response),
         {
@@ -191,7 +201,7 @@ describe('HomeRedux', () => {
 
     it("saga 'getPlaylists' failed", () => {
       return sagaFactory<FeaturedPlaylistResponseUriType>(
-        HomeSaga.getFeaturedPlaylist,
+        HomeScreenSaga.getFeaturedPlaylist,
         [PlaylistRepository.getFeaturedPlaylist, undefined],
         HomeScreenAction.setFeaturedPlaylists(RepositoryStatus.FAILED, []),
         {
@@ -210,7 +220,7 @@ describe('HomeRedux', () => {
       songs.push({
         name: "name" + i,
         artistName: "artistName" + i,
-        song: "songs" + i,
+        previewURL: "songs" + i,
         duration: "00:00" + i,
       })
     }
@@ -222,7 +232,7 @@ describe('HomeRedux', () => {
             name: track.name,
             artists: [{name: track.artistName}],
             duration_ms: Math.floor(Math.random() * 100000),
-            preview_url: track.song,
+            preview_url: track.previewURL,
           }))
         }
       }
@@ -230,7 +240,7 @@ describe('HomeRedux', () => {
       const response = RecentsSongResponse.uriContent(songUri)
 
       return sagaFactory<RecentsSongResponseUriType>(
-        HomeSaga.getRecentsSong,
+        HomeScreenSaga.getRecentsSong,
         [SongsRepository.getRecentsSongs, songUri],
         HomeScreenAction.setRecentsSongs(RepositoryStatus.SUCCESS, response),
         {
@@ -243,7 +253,7 @@ describe('HomeRedux', () => {
 
     it("saga 'getRecentsSongs' failed", () => {
       return sagaFactory<RecentsSongResponseUriType>(
-        HomeSaga.getRecentsSong,
+        HomeScreenSaga.getRecentsSong,
         [SongsRepository.getRecentsSongs, undefined],
         HomeScreenAction.setRecentsSongs(RepositoryStatus.FAILED, []),
         {

@@ -29,8 +29,6 @@ export class HomeScreenAction {
     playlists
   });
 
-
-
   static getRecentsSongs = (): Response => ({
     type: HomeScreenActionConst.getRecentsSong,
     status: RepositoryStatus.LOADING

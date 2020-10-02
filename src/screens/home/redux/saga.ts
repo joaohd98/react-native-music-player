@@ -9,7 +9,7 @@ import {FeaturedPlaylistResponse} from "../../../repositories/playlist/response"
 import {SongsRepository} from "../../../repositories/songs";
 import {RecentsSongResponse} from "../../../repositories/songs/recents-song-response";
 
-export class HomeSaga {
+export class HomeScreenSaga {
   static *getNewReleases() {
     try {
       const result = yield call(ReleasesRepository.getReleases);
@@ -45,9 +45,10 @@ export class HomeSaga {
   }
 }
 
+export function *watchSagaHome() {
+  yield takeEvery(HomeScreenActionConst.getReleases, HomeScreenSaga.getNewReleases)
+  yield takeEvery(HomeScreenActionConst.getFeaturedPlaylists, HomeScreenSaga.getFeaturedPlaylist)
+  yield takeEvery(HomeScreenActionConst.getRecentsSong, HomeScreenSaga.getRecentsSong)
+}
 
-export const HomeScreenSaga = [
-  takeEvery(HomeScreenActionConst.getReleases, HomeSaga.getNewReleases),
-  takeEvery(HomeScreenActionConst.getFeaturedPlaylists, HomeSaga.getFeaturedPlaylist),
-  takeEvery(HomeScreenActionConst.getRecentsSong, HomeSaga.getRecentsSong)
-];
+

@@ -1,12 +1,12 @@
 export class RecentsSongResponse {
   name: string
   artistName: string
-  song: string
+  previewURL: string
   duration: string
 
   constructor(content: RecentsSongResponseUriContentType) {
     this.name = content.name
-    this.song = content.preview_url
+    this.previewURL = content.preview_url
 
     this.duration = RecentsSongResponse.millisToMinutesAndSeconds(content.duration_ms)
 
