@@ -2,12 +2,15 @@ import {Action} from "redux";
 import {RepositoryStatus} from "../../../repositories/repository-status";
 import {ReleasesResponse} from "../../../repositories/releases/response";
 import {FeaturedPlaylistResponse} from "../../../repositories/playlist/response";
+import {RecentsSongResponse} from "../../../repositories/songs/recents-song-response";
 
 export enum HomeScreenActionConst {
   getReleases = "HomeScreenActionConst/getReleases",
   setReleases = "HomeScreenActionConst/setReleases",
   getFeaturedPlaylists = "HomeScreenActionConst/getFeaturedPlaylists",
   setFeaturedPlaylists = "HomeScreenActionConst/setFeaturedPlaylists",
+  getRecentsSong = "HomeScreenActionConst/getRecentsSong",
+  setRecentsSong = "HomeScreenActionConst/setRecentsSong"
 }
 
 interface GetNewReleases extends Action<HomeScreenActionConst.getReleases> {
@@ -32,6 +35,18 @@ interface SetFeaturedPlaylists extends Action<HomeScreenActionConst.setFeaturedP
   playlists: FeaturedPlaylistResponse[],
 }
 
+interface GetRecentsSongs extends Action<HomeScreenActionConst.getRecentsSong> {
+  type: HomeScreenActionConst.getRecentsSong,
+  status: RepositoryStatus
+}
+
+interface SetRecentsSongs extends Action<HomeScreenActionConst.setRecentsSong> {
+  type: HomeScreenActionConst.setRecentsSong,
+  status: RepositoryStatus,
+  songs: RecentsSongResponse[],
+}
+
 export type HomeScreenActionType =
   GetNewReleases | SetNewReleases |
-  GetFeaturedPlaylists | SetFeaturedPlaylists
+  GetFeaturedPlaylists | SetFeaturedPlaylists |
+  GetRecentsSongs | SetRecentsSongs

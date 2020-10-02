@@ -7,11 +7,14 @@ import {RepositoryStatus} from "../../../repositories/repository-status";
 export const HomeScreenInitialState: HomeScreenProps = {
   newReleases: [],
   playlists: [],
+  songs: [],
   statusReleases: RepositoryStatus.LOADING,
   statusPlaylists: RepositoryStatus.LOADING,
+  statusSongs: RepositoryStatus.LOADING,
   getReleases: () => HomeScreenAction.getReleases(),
-  getFeaturedPlaylists: () => HomeScreenAction.getFeaturedPlaylists()
-};
+  getFeaturedPlaylists: () => HomeScreenAction.getFeaturedPlaylists(),
+  getRecentsSongs: () => HomeScreenAction.getRecentsSongs()
+}
 
 export const HomeScreenReducer: Reducer<HomeScreenProps | undefined, HomeScreenActionType> = (
   state = HomeScreenInitialState,
@@ -45,6 +48,21 @@ export const HomeScreenReducer: Reducer<HomeScreenProps | undefined, HomeScreenA
         ...state,
         statusPlaylists: action.status,
         playlists: action.playlists
+      }
+    }
+
+    case HomeScreenActionConst.getRecentsSong: {
+      return {
+        ...state,
+        statusSongs: action.status,
+      }
+    }
+
+    case HomeScreenActionConst.setRecentsSong: {
+      return {
+        ...state,
+        statusSongs: action.status,
+        songs: action.songs
       }
     }
 

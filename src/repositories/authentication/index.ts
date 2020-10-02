@@ -10,12 +10,7 @@ export class AuthenticationRepository  {
     clientSecret: KEYS.clientSecret,
     redirectUrl: redirectUri,
     scopes: [
-      'playlist-read-private',
-      'playlist-modify-public',
-      'playlist-modify-private',
-      'user-library-read',
-      'user-library-modify',
-      'user-top-read',
+      'user-read-recently-played',
     ],
     serviceConfiguration: {
       authorizationEndpoint: 'https://accounts.spotify.com/authorize',

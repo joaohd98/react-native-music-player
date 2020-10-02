@@ -39,7 +39,8 @@ const mapStateToProps = (state: ReducersProps): HomeScreenProps => ({
 
 const mapDispatchToProps = (dispatch: Dispatch): HomeScreenPropsActions => ({
   getReleases: bindActionCreators(HomeScreenInitialState.getReleases, dispatch),
-  getFeaturedPlaylists: bindActionCreators(HomeScreenInitialState.getFeaturedPlaylists, dispatch)
+  getFeaturedPlaylists: bindActionCreators(HomeScreenInitialState.getFeaturedPlaylists, dispatch),
+  getRecentsSongs: bindActionCreators(HomeScreenInitialState.getRecentsSongs, dispatch)
 });
 
 export const HomeScreenRedux = connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

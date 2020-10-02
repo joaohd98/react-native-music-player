@@ -2,5 +2,6 @@ const uri = "https://api.spotify.com/v1/"
 
 export const repositoriesUri = {
   releases: uri + "browse/new-releases",
-  featuredPlaylist: uri + "browse/featured-playlists"
+  featuredPlaylist: uri + "browse/featured-playlists",
+  recentsSongs: uri + "me/player/recently-played"
 }
