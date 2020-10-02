@@ -1,6 +1,6 @@
 import axios from "axios";
-import {ReleasesResponseUriType} from "../releases/response";
 import {repositoriesUri} from "../repository-url";
+import {RecentsSongResponseUriType} from "./recents-song-response";
 
 export class SongsRepository {
   static getRecentsSongs() {
@@ -8,6 +8,6 @@ export class SongsRepository {
       limit: "4"
     })
 
-    return axios.get<ReleasesResponseUriType>(repositoriesUri.recentsSongs + "?" + data)
+    return axios.get<RecentsSongResponseUriType>(repositoriesUri.recentsSongs + "?" + data)
   }
 }

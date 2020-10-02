@@ -9,6 +9,12 @@ import {UserProps} from "../user-persistence/props";
 import {Reducer} from "react";
 import {HomeScreenProps} from "../screens/home/props";
 
+export class ReduxTest {
+
+  storeFactory() {
+
+  }
+}
 
 export const storeFactory = (): Store<CombinedState<ReducersProps>, ActionsType> => {
   const reducers = combineReducers<{
@@ -28,3 +34,4 @@ export const storeFactory = (): Store<CombinedState<ReducersProps>, ActionsType>
 
   return createStore(reducers, initialStore, applyMiddleware(saga))
 }
+

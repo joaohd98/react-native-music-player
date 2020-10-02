@@ -1,5 +1,5 @@
 import axios from "axios"
-import {FeaturedPlaylistResponse} from "./response";
+import {FeaturedPlaylistResponseUriType} from "./response";
 import {repositoriesUri} from "../repository-url";
 
 export class PlaylistRepository {
@@ -8,6 +8,6 @@ export class PlaylistRepository {
       limit: "6"
     })
 
-    return axios.get<FeaturedPlaylistResponse>(repositoriesUri.featuredPlaylist + "?" + data)
+    return axios.get<FeaturedPlaylistResponseUriType>(repositoriesUri.featuredPlaylist + "?" + data)
   }
 }
