@@ -28,8 +28,8 @@ export class RecentsSongResponse {
   static uriContent(value: RecentsSongResponseUriType): RecentsSongResponse[] {
     const song: RecentsSongResponse[] = []
 
-    value.albums.items.forEach(item => {
-      song.push(new RecentsSongResponse(item))
+    value.items.forEach(({track}) => {
+      song.push(new RecentsSongResponse(track))
     })
 
     return song
@@ -37,9 +37,9 @@ export class RecentsSongResponse {
 }
 
 export type RecentsSongResponseUriType = {
-  albums: {
-    items: RecentsSongResponseUriContentType[]
-  }
+  items: {
+    track: RecentsSongResponseUriContentType
+  }[]
 }
 
 export type RecentsSongResponseUriContentType = {

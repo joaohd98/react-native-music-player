@@ -5,6 +5,7 @@ import {SvgProps} from './props';
 export const IconClose = (props: SvgProps) => {
   return (
     <Svg
+      style={props.style}
       width={props.widthIcon}
       height={props.heightIcon}
       viewBox="0 0 512.001 512.001">

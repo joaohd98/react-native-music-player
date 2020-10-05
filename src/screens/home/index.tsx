@@ -9,26 +9,30 @@ import {HomeScreenInitialState} from "./redux/reducer";
 import {HomeReleasesView} from "./components/releases";
 import {HomeScreenStyles} from "./styles";
 import {HomePlaylistView} from "./components/playlist";
+import {HomeSongsView} from "./components/songs";
 
 export class HomeScreen extends React.Component<HomeScreenProps> {
   componentDidMount() {
     this.props.getReleases()
     this.props.getFeaturedPlaylists()
+    this.props.getRecentsSongs()
   }
 
   render() {
     const {
+      ScrollView,
       BorderView
     } = HomeScreenStyles
 
     return (
-      <Container>
+      <ScrollView>
         <CustomHeader title={'Home'} placeholder={'Search album song'} />
         <HomeReleasesView status={this.props.statusReleases} releases={this.props.newReleases} onTryAgain={this.props.getReleases} />
         <BorderView />
         <HomePlaylistView status={this.props.statusPlaylists} playlists={this.props.playlists}  onTryAgain={this.props.getFeaturedPlaylists} />
         <BorderView />
-      </Container>
+        <HomeSongsView status={this.props.statusSongs} songs={this.props.songs} onTryAgain={this.props.getRecentsSongs} />
+      </ScrollView>
     );
   }
 }
