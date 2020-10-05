@@ -13,7 +13,7 @@ export class TryAgainView extends React.Component<TryAgainProps> {
     } = TryAgainStyle
 
     return (
-      <ContainerView>
+      <ContainerView style={this.props.style}>
         <FirstLineText>Something wrong happened</FirstLineText>
         <SecondLineText>{this.props.text}</SecondLineText>
         <TouchableButton onPress={this.props.onPress}>

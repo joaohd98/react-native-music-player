@@ -1,15 +1,13 @@
 import styled from "styled-components/native";
 import {CustomFonts} from "../../../../theme/fonts";
 import {CustomColors} from "../../../../theme/colors";
-import {IconClose} from "../../../../../assets/images/icon-close";
 import {SvgProps} from "../../../../../assets/images/props";
 import {IconPlayColorFul} from "../../../../../assets/images/icon-play-colorful";
 import {HomeScreenStyles} from "../../styles";
 
 export const HomeSongsStyles = {
   ContainerView: styled.View`
-     height: 220px;
-     margin-top: 20px;
+     margin-vertical: 20px;
   `,
   TopView: styled.View`
     flex-direction: row;
