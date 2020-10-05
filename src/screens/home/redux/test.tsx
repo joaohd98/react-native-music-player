@@ -227,14 +227,14 @@ describe('HomeRedux', () => {
 
     it("saga 'getRecentsSongs' success", () => {
       const songUri: RecentsSongResponseUriType = {
-        albums: {
-          items: songs.map<RecentsSongResponseUriContentType>(track => ({
+        items: songs.map<{track: RecentsSongResponseUriContentType}>(track => ({
+          track: {
             name: track.name,
             artists: [{name: track.artistName}],
             duration_ms: Math.floor(Math.random() * 100000),
             preview_url: track.previewURL,
-          }))
-        }
+          }
+        }))
       }
 
       const response = RecentsSongResponse.uriContent(songUri)
