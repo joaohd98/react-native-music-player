@@ -29,7 +29,7 @@ const getBottomTabBarOptions = (): BottomTabBarOptions => ({
   showLabel: false,
   style: {
     backgroundColor: CustomColors.tabBarColor,
-    paddingTop: 30,
+    paddingVertical: 40,
     borderTopWidth: 0,
   },
 })

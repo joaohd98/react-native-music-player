@@ -2,7 +2,12 @@ import styled from "styled-components/native";
 import {CustomColors} from "../../theme/colors";
 
 export const HomeScreenStyles = {
-  ScrollView: styled.ScrollView`
+  ScrollView: styled.ScrollView.attrs(() => ({
+    contentContainerStyle: {
+      flexGrow: 1,
+      paddingBottom: 180,
+    },
+  }))`
     flex: 1;
     background-color: ${CustomColors.backgroundColor};
   `,
