@@ -25,7 +25,7 @@ export class HomeScreen extends React.Component<HomeScreenProps> {
     } = HomeScreenStyles
 
     return (
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <CustomHeader title={'Home'} placeholder={'Search album song'} />
         <HomeReleasesView status={this.props.statusReleases} releases={this.props.newReleases} onTryAgain={this.props.getReleases} />
         <BorderView />
