@@ -44,13 +44,14 @@ const Tab = createBottomTabNavigator<TabRoutesList>();
 
 export const TabsNavigation = () => {
   return (
-    <Tab.Navigator
-      initialRouteName={"Songs"}
-      screenOptions={({route}) => ({tabBarIcon: ({focused}) => getTabIcon(route.name, focused)})}
-      tabBarOptions={getBottomTabBarOptions()} >
-      <Tab.Screen name="Home" component={HomeScreenRedux} />
-      <Tab.Screen name="Songs" component={SongsScreen} />
-    </Tab.Navigator>
+    <SongsScreen  />
+    // <Tab.Navigator
+    //   initialRouteName={"Songs"}
+    //   screenOptions={({route}) => ({tabBarIcon: ({focused}) => getTabIcon(route.name, focused)})}
+    //   tabBarOptions={getBottomTabBarOptions()} >
+    //   <Tab.Screen name="Home" component={HomeScreenRedux} />
+    //   <Tab.Screen name="Songs" component={SongsScreen} />
+    // </Tab.Navigator>
   )
 }
 

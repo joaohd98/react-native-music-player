@@ -20,7 +20,7 @@ interface State {
 
 const { height } = Dimensions.get("screen")
 
-export class SongsScreen extends React.Component<State> {
+export class SongsScreen extends React.Component<{}, State> {
   panResponder?: PanResponderInstance
   panAnimationValue = 0
   isExpanded = true
@@ -35,8 +35,6 @@ export class SongsScreen extends React.Component<State> {
     const {panAnimation} = this.state
 
     panAnimation.addListener((animation) => {
-      console.log(animation.value)
-
       this.panAnimationValue = animation.value
     })
 
@@ -55,20 +53,31 @@ export class SongsScreen extends React.Component<State> {
       onPanResponderRelease: () => {
         panAnimation.flattenOffset();
 
-        const toValue = (this.panAnimationValue > height / 2) ? height : 0
+        const toValue = this.isExpanded ? 0 : height
+        const toValueInverse = this.isExpanded ? height : 0
 
         if(this.panAnimationValue < 0 || this.panAnimationValue > height) {
-          panAnimation.setValue(toValue)
+          panAnimation.setValue(toValueInverse)
         }
 
-        Animated.spring(panAnimation, {
-          toValue,
-          useNativeDriver: false
-        }).start()
+        else if(this.panAnimationValue <= 75 || this.panAnimationValue >= height - 75) {
+          Animated.spring(panAnimation, {
+            toValue: toValueInverse,
+            useNativeDriver: false
+          }).start()
+        }
 
+        else {
+
+          Animated.spring(panAnimation, {
+            toValue,
+            useNativeDriver: false
+          }).start()
+
+          this.isExpanded = !this.isExpanded
+        }
       }
     })
-
   }
 
   startAnimation = () => {
@@ -89,7 +98,7 @@ export class SongsScreen extends React.Component<State> {
 
     const translateY = this.state.panAnimation.interpolate({
       inputRange: [0, height],
-      outputRange: [0, height - 200],
+      outputRange: [0, height - 130],
       extrapolate: 'clamp'
     })
 
