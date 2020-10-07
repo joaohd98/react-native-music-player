@@ -5,6 +5,9 @@ import {IconClose} from "../../../assets/images/icon-close";
 import {IconPlayColorFul} from "../../../assets/images/icon-play-colorful";
 import {IconRetry} from "../../../assets/images/icon-retry";
 import LinearGradient from 'react-native-linear-gradient';
+import {PercentageScreen} from "../../utils/percentage-screen";
+
+const contentSize = PercentageScreen.getHeight(30);
 
 export const PlayerSongStyle = {
   Container: styled(Animated.View)<ViewAnimatedProps>`
@@ -45,17 +48,36 @@ export const PlayerSongStyle = {
     opacity: 0.8;
     color: white;
   `,
-  MaximizedContainerView: styled.View`
-
+  MaximizedContentContainer: styled.View`
+    width: 100%;
+    height: ${contentSize};
+    margin-vertical: 50px;
+    justify-content: center;
   `,
   MaximizedSongImage: styled.Image`
-    
+    height: ${contentSize};
+    width: ${contentSize};
+    border-radius: ${contentSize};
+    border-width: 2px;
+    border-color: yellow;
+    align-self: center;
   `,
   MaximizedVideo: styled.View`
- 
+    width: 100%;
+    height: 100%;
+    background-color: violet;
   `,
-  MaximizedNameText: styled.Text`
-
+  MaximizedNameFirstText: styled.Text`
+    margin-horizontal: 10%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+  `,
+  MaximizedNameSecondText: styled.Text`
+    margin-horizontal: 10%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
   `,
   MaximizedPlayerContent: styled.View`
 

@@ -13,8 +13,8 @@ const linearGradientColors = [
   "rgba(255, 255, 255, 0.5)",
   "rgba(255, 255, 255, 0)",
 ]
-
 const locations = [0.1, 0.2, 0.3, 0.7, 0.8, 0.9]
+const uri = "https://www.w3schools.com/w3css/img_lights.jpg"
 
 export class PlayerSong extends React.Component<PlayerSongProp, PlayerSongState> {
   state: PlayerSongState = {
@@ -46,13 +46,17 @@ export class PlayerSong extends React.Component<PlayerSongProp, PlayerSongState>
       MaximizedTitleGradient,
       MaximizedTitleView,
       MaximizedTitleText,
-      // MaximizedUnderlineText,
+      MaximizedContentContainer,
+      MaximizedSongImage,
+      MaximizedVideo,
+      MaximizedNameFirstText,
+      MaximizedNameSecondText
     } = PlayerSongStyle
 
-    const style = this.playerSongAnimated.getMaximizedStyle(this.state.dragAnimation)
+    const styleContainer = this.playerSongAnimated.getMaximizedStyle(this.state.dragAnimation)
 
     return (
-      <MaximizedContainer style={style}>
+      <MaximizedContainer style={styleContainer}>
         <MaximizedTopView>
           <MaximizedIconTouchable>
             <MaximizedCollapseIcon widthIcon={30} heightIcon={30}/>
@@ -68,6 +72,15 @@ export class PlayerSong extends React.Component<PlayerSongProp, PlayerSongState>
             </MaximizedTitleText>
           </MaximizedTitleView>
         </MaximizedTitleGradient>
+        <MaximizedContentContainer>
+          {this.props.mediaType == "audio" ? <MaximizedSongImage source={{uri}} /> : <MaximizedVideo/>}
+        </MaximizedContentContainer>
+        <MaximizedNameFirstText>
+          AUDIO BOOK | CAP3
+        </MaximizedNameFirstText>
+        <MaximizedNameSecondText>
+          IOT
+        </MaximizedNameSecondText>
       </MaximizedContainer>
     )
   }

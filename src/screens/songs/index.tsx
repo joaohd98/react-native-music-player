@@ -29,13 +29,15 @@ export class SongsScreen extends React.Component<{}, State> {
   }
 
   render() {
+    const randomType = Math.floor(Math.random() * 100) % 2 == 0 ? "audio" : "video";
+
     return (
       <View style={{flex: 1, backgroundColor: CustomColors.backgroundColor}}>
         <CustomHeader title={'Songs'} placeholder={'Search for songs'} />
         <TouchableOpacity style={{backgroundColor: "red"}} onPress={() => this.setState({isOpen: true})}>
           <Text>Open Modal</Text>
         </TouchableOpacity>
-        <PlayerSong isOpen={this.state.isOpen} height={height} onClose={() => this.setState({isOpen: false})} />
+        <PlayerSong isOpen={this.state.isOpen} mediaType={randomType} height={height} onClose={() => this.setState({isOpen: false})} />
       </View>
     );
   }

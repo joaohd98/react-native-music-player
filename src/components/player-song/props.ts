@@ -1,5 +1,6 @@
 export interface PlayerSongProp {
   isOpen: boolean,
   onClose: () => void,
-  height: number
+  height: number,
+  mediaType: "audio" | "video",
 }
