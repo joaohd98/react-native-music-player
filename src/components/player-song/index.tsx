@@ -5,6 +5,17 @@ import {PlayerSongStyle} from "./styles";
 import {Animated, Dimensions} from "react-native";
 import {PlayerSongAnimated} from "./animation";
 
+const linearGradientColors = [
+  "rgba(255, 255, 255, 0)",
+  "rgba(255, 255, 255, 0.5)",
+  "rgba(255, 255, 255, 1)",
+  "rgba(255, 255, 255, 1)",
+  "rgba(255, 255, 255, 0.5)",
+  "rgba(255, 255, 255, 0)",
+]
+
+const locations = [0.1, 0.2, 0.3, 0.7, 0.8, 0.9]
+
 export class PlayerSong extends React.Component<PlayerSongProp, PlayerSongState> {
   state: PlayerSongState = {
     heightAnimation: new Animated.Value(0),
@@ -32,9 +43,10 @@ export class PlayerSong extends React.Component<PlayerSongProp, PlayerSongState>
       MaximizedIconTouchable,
       MaximizedCollapseIcon,
       MaximizedCloseIcon,
-      MaximizedTitleContent,
+      MaximizedTitleGradient,
+      MaximizedTitleView,
       MaximizedTitleText,
-      MaximizedUnderlineText,
+      // MaximizedUnderlineText,
     } = PlayerSongStyle
 
     const style = this.playerSongAnimated.getMaximizedStyle(this.state.dragAnimation)
@@ -49,15 +61,15 @@ export class PlayerSong extends React.Component<PlayerSongProp, PlayerSongState>
             <MaximizedCloseIcon widthIcon={30} heightIcon={30} />
           </MaximizedIconTouchable>
         </MaximizedTopView>
-        <MaximizedTitleContent>
-          <MaximizedTitleText>
-            FASE 1 - DEVELOPMENT ENVIRONMENT
-          </MaximizedTitleText>
-          <MaximizedUnderlineText />
-        </MaximizedTitleContent>
+        <MaximizedTitleGradient start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} colors={linearGradientColors} locations={locations}>
+          <MaximizedTitleView>
+            <MaximizedTitleText numberOfLines={1}>
+              FASE 1 - Development Enviromnent
+            </MaximizedTitleText>
+          </MaximizedTitleView>
+        </MaximizedTitleGradient>
       </MaximizedContainer>
     )
-
   }
 
   getMinimizedContent = () => {

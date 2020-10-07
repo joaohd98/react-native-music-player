@@ -4,6 +4,7 @@ import {ViewAnimatedProps} from "../../utils/animation-type";
 import {IconClose} from "../../../assets/images/icon-close";
 import {IconPlayColorFul} from "../../../assets/images/icon-play-colorful";
 import {IconRetry} from "../../../assets/images/icon-retry";
+import LinearGradient from 'react-native-linear-gradient';
 
 export const PlayerSongStyle = {
   Container: styled(Animated.View)<ViewAnimatedProps>`
@@ -29,18 +30,20 @@ export const PlayerSongStyle = {
   MaximizedCloseIcon: styled(IconClose)`
     color: white;
   `,
-  MaximizedTitleContent: styled.View`
+  MaximizedTitleGradient: styled(LinearGradient)`
     align-self: center;
   `,
-  MaximizedTitleText: styled.Text`
-    font-size: 14px;
-    color: white;
+  MaximizedTitleView: styled.View`
+    background-color: black;
+    margin-bottom: 1px;
   `,
-  MaximizedUnderlineText: styled.View`
-    height: 0.5px;
-    width: 200px;
-    background-color: white;
-    margin: 10px;
+  MaximizedTitleText: styled.Text`
+    margin-bottom: 10px;
+    margin-horizontal: 10%;
+    text-align: center;
+    background-color: black;
+    opacity: 0.8;
+    color: white;
   `,
   MaximizedContainerView: styled.View`
 
