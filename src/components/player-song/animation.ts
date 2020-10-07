@@ -6,6 +6,7 @@ export class PlayerSongAnimated {
   private panResponder: PanResponderInstance
   private panAnimationValue = 0
   private readonly height: number
+  private readonly sizeAnimation = 75
 
   constructor(dragAnimation: Animated.Value, getExpanded: () => boolean, setExpanded: (value: boolean) => void,  height: number) {
     this.height = height
@@ -43,7 +44,7 @@ export class PlayerSongAnimated {
           dragAnimation.setValue(toValueInverse)
         }
 
-        else if(this.panAnimationValue <= 75 || this.panAnimationValue >= height - 75) {
+        else if(this.panAnimationValue <= this.sizeAnimation || this.panAnimationValue >= height - this.sizeAnimation) {
           Animated.timing(dragAnimation, {
             toValue: toValueInverse,
             duration: 300,
@@ -52,8 +53,6 @@ export class PlayerSongAnimated {
         }
 
         else {
-          console.log("setExap", isExpanded)
-
           Animated.timing(dragAnimation, {
             toValue,
             duration: 300,
@@ -90,13 +89,23 @@ export class PlayerSongAnimated {
 
     const translateY = dragAnimation.interpolate({
       inputRange: [0, this.height],
-      outputRange: [0, this.height - 130],
+      outputRange: [0, this.height - this.sizeAnimation * 2],
       extrapolate: 'clamp'
     })
 
     return {
       height: visibleAnimation,
       transform: [{translateY}],
+    }
+  }
+
+  getMinimizedStyle = (dragAnimation: Animated.Value): AnimatedViewStyle => {
+    return {
+      opacity: dragAnimation.interpolate({
+        inputRange: [this.height - this.sizeAnimation * 3, this.height],
+        outputRange: [0, 1],
+        extrapolate: "clamp"
+      })
     }
   }
 }

@@ -11,7 +11,7 @@ export const PlayerSongStyle = {
     bottom: 0;
     width: 100%;
   `,
-  MinimizedContainer: styled(Animated.View)`
+  MinimizedContainer: styled(Animated.View)<ViewAnimatedProps>`
     bottom: 0;
     flex-direction: row;
     background-color: black;

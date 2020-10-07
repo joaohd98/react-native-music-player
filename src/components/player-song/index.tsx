@@ -37,8 +37,10 @@ export class PlayerSong extends React.Component<PlayerSongProp, PlayerSongState>
       MinimizedIconTouchable
     } = PlayerSongStyle
 
+    const style = this.playerSongAnimated.getMinimizedStyle(this.state.dragAnimation)
+
     return (
-      <MinimizedContainer style={{opacity: this.state.isExpanded ? 0 : 1}}>
+      <MinimizedContainer style={style}>
         <MinimizedImagePlaceholder />
         <MinimizedTextView>
           <MinimizedFirstText>Name of content</MinimizedFirstText>
