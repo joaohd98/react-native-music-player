@@ -109,10 +109,20 @@ export class PlayerSongAnimated {
     }
   }
 
-  getMaximizedStyle = (dragAnimation: Animated.Value): AnimatedViewStyle => {
+  getMaximizedTopStyle = (dragAnimation: Animated.Value): AnimatedViewStyle => {
     return {
       opacity: dragAnimation.interpolate({
         inputRange: [0, this.height - this.sizeAnimation * 3],
+        outputRange: [1, 0],
+        extrapolate: "clamp"
+      }),
+    }
+  }
+
+  getMaximizedBottomStyle = (dragAnimation: Animated.Value): AnimatedViewStyle => {
+    return {
+      opacity: dragAnimation.interpolate({
+        inputRange: [0, this.sizeAnimation * 3],
         outputRange: [1, 0],
         extrapolate: "clamp"
       })

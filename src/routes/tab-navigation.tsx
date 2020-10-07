@@ -44,7 +44,7 @@ const Tab = createBottomTabNavigator<TabRoutesList>();
 
 export const TabsNavigation = () => {
   return (
-    <SongsScreen  />
+    <SongsScreen />
     // <Tab.Navigator
     //   initialRouteName={"Songs"}
     //   screenOptions={({route}) => ({tabBarIcon: ({focused}) => getTabIcon(route.name, focused)})}

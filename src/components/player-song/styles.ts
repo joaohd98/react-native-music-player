@@ -8,6 +8,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {PercentageScreen} from "../../utils/percentage-screen";
 
 const contentSize = PercentageScreen.getHeight(30);
+const marginBetween  = PercentageScreen.getHeight(5);
 
 export const PlayerSongStyle = {
   Container: styled(Animated.View)<ViewAnimatedProps>`
@@ -16,15 +17,17 @@ export const PlayerSongStyle = {
     bottom: 0;
     width: 100%;
   `,
-  MaximizedContainer: styled(Animated.View)<ViewAnimatedProps>`
+  MaximizedContainer: styled.View`
     position: absolute;
     top: 0;
     width: 100%;
   `,
+  MaximizedHeaderAnimated: styled(Animated.View)<ViewAnimatedProps>``,
   MaximizedTopView: styled.View`
      flex-direction: row;
      justify-content: space-between;
-     margin: 25px;
+     margin-horizontal: 25px;
+     margin-vertical: ${marginBetween};
   `,
   MaximizedIconTouchable: styled.TouchableOpacity``,
   MaximizedCollapseIcon: styled(IconRetry)`
@@ -51,7 +54,7 @@ export const PlayerSongStyle = {
   MaximizedContentContainer: styled.View`
     width: 100%;
     height: ${contentSize};
-    margin-vertical: 50px;
+    margin-vertical: ${PercentageScreen.getHeight(7.5)};
     justify-content: center;
   `,
   MaximizedSongImage: styled.Image`
@@ -67,24 +70,68 @@ export const PlayerSongStyle = {
     height: 100%;
     background-color: violet;
   `,
-  MaximizedNameFirstText: styled.Text`
+  MaximizedBottomAnimated: styled(Animated.View)<ViewAnimatedProps>``,
+  MaximizedNameContainer: styled.View`
     margin-horizontal: 10%;
-    text-align: center;
+  `,
+  MaximizedNameFirstText: styled.Text`
     color: white;
     font-weight: bold;
+    text-align: center;
   `,
   MaximizedNameSecondText: styled.Text`
-    margin-horizontal: 10%;
-    text-align: center;
     color: white;
     font-weight: bold;
+    text-align: center;
   `,
   MaximizedPlayerContent: styled.View`
-
+    flex-direction: row;
+    margin-vertical: ${marginBetween};
+    justify-content: center;
+    align-items: center;
   `,
-  MaximizedPlayerLeftIcon: styled(IconPlayColorFul)``,
+  MaximizedPlayerLeftIcon: styled(IconPlayColorFul)`
+    margin-right: 30px;
+  `,
   MaximizedPlayerStartIcon: styled(IconPlayColorFul)``,
-  MaximizedPlayerRightIcon: styled(IconPlayColorFul)``,
+  MaximizedPlayerRightIcon: styled(IconPlayColorFul)`
+    margin-left: 30px;
+  `,
+  ProgressBarContainer: styled.View`
+    width: 85%;
+    margin-horizontal: 7.5%;
+  `,
+  ProgressBarView: styled.View`
+    height: 2px;
+    width: 100%;
+    background-color: white;
+    flex-direction: row;
+  `,
+  ProgressBarComplete: styled.View`
+    background-color: violet;
+    height: 2px;
+    width: 20%;
+  `,
+  ProgressBarBall: styled.View`
+    height: 18px;
+    width: 18px;
+    border-radius: 15px;
+    background-color: violet;
+    margin-top: -8px;
+  `,
+  ProgressBarTextContainer: styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+  `,
+  ProgressBarTimerText: styled.Text`
+    color: white;
+    opacity: 0.8;
+  `,
+  ProgressBarDurationText: styled.Text`
+    color: white;
+    opacity: 0.8;
+  `,
   MinimizedContainer: styled(Animated.View)<ViewAnimatedProps>`
     position: absolute;
     top: 0;

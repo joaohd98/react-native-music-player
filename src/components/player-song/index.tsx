@@ -39,6 +39,7 @@ export class PlayerSong extends React.Component<PlayerSongProp, PlayerSongState>
   getMaximizedContent = () => {
     const {
       MaximizedContainer,
+      MaximizedHeaderAnimated,
       MaximizedTopView,
       MaximizedIconTouchable,
       MaximizedCollapseIcon,
@@ -49,38 +50,69 @@ export class PlayerSong extends React.Component<PlayerSongProp, PlayerSongState>
       MaximizedContentContainer,
       MaximizedSongImage,
       MaximizedVideo,
+      MaximizedBottomAnimated,
+      MaximizedNameContainer,
       MaximizedNameFirstText,
-      MaximizedNameSecondText
+      MaximizedNameSecondText,
+      MaximizedPlayerContent,
+      MaximizedPlayerLeftIcon,
+      MaximizedPlayerStartIcon,
+      MaximizedPlayerRightIcon,
+      ProgressBarContainer,
+      ProgressBarView,
+      ProgressBarBall,
+      ProgressBarComplete,
+      ProgressBarTextContainer,
+      ProgressBarTimerText,
+      ProgressBarDurationText
     } = PlayerSongStyle
 
-    const styleContainer = this.playerSongAnimated.getMaximizedStyle(this.state.dragAnimation)
+    const styleTop = this.playerSongAnimated.getMaximizedTopStyle(this.state.dragAnimation)
+    const styleBottom = this.playerSongAnimated.getMaximizedBottomStyle(this.state.dragAnimation)
 
     return (
-      <MaximizedContainer style={styleContainer}>
-        <MaximizedTopView>
-          <MaximizedIconTouchable>
-            <MaximizedCollapseIcon widthIcon={30} heightIcon={30}/>
-          </MaximizedIconTouchable>
-          <MaximizedIconTouchable>
-            <MaximizedCloseIcon widthIcon={30} heightIcon={30} />
-          </MaximizedIconTouchable>
-        </MaximizedTopView>
-        <MaximizedTitleGradient start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} colors={linearGradientColors} locations={locations}>
-          <MaximizedTitleView>
-            <MaximizedTitleText numberOfLines={1}>
-              FASE 1 - Development Enviromnent
-            </MaximizedTitleText>
-          </MaximizedTitleView>
-        </MaximizedTitleGradient>
+      <MaximizedContainer>
+        <MaximizedHeaderAnimated style={styleTop}>
+          <MaximizedTopView>
+            <MaximizedIconTouchable>
+              <MaximizedCollapseIcon widthIcon={30} heightIcon={30}/>
+            </MaximizedIconTouchable>
+            <MaximizedIconTouchable>
+              <MaximizedCloseIcon widthIcon={30} heightIcon={30} />
+            </MaximizedIconTouchable>
+          </MaximizedTopView>
+          <MaximizedTitleGradient start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} colors={linearGradientColors} locations={locations}>
+            <MaximizedTitleView>
+              <MaximizedTitleText numberOfLines={1}>
+                FASE 1 - Development Enviromnent
+              </MaximizedTitleText>
+            </MaximizedTitleView>
+          </MaximizedTitleGradient>
+        </MaximizedHeaderAnimated>
         <MaximizedContentContainer>
           {this.props.mediaType == "audio" ? <MaximizedSongImage source={{uri}} /> : <MaximizedVideo/>}
         </MaximizedContentContainer>
-        <MaximizedNameFirstText>
-          AUDIO BOOK | CAP3
-        </MaximizedNameFirstText>
-        <MaximizedNameSecondText>
-          IOT
-        </MaximizedNameSecondText>
+        <MaximizedBottomAnimated style={styleBottom}>
+          <MaximizedNameContainer>
+            <MaximizedNameFirstText>AUDIO BOOK | CAP3</MaximizedNameFirstText>
+            <MaximizedNameSecondText>IOT</MaximizedNameSecondText>
+          </MaximizedNameContainer>
+          <MaximizedPlayerContent>
+            <MaximizedPlayerLeftIcon widthIcon={40} heightIcon={40} />
+            <MaximizedPlayerStartIcon widthIcon={60} heightIcon={60} />
+            <MaximizedPlayerRightIcon widthIcon={40} heightIcon={40} />
+          </MaximizedPlayerContent>
+          <ProgressBarContainer>
+            <ProgressBarView>
+              <ProgressBarComplete />
+              <ProgressBarBall />
+            </ProgressBarView>
+            <ProgressBarTextContainer>
+              <ProgressBarTimerText>00:58</ProgressBarTimerText>
+              <ProgressBarDurationText>32:42</ProgressBarDurationText>
+            </ProgressBarTextContainer>
+          </ProgressBarContainer>
+        </MaximizedBottomAnimated>
       </MaximizedContainer>
     )
   }
