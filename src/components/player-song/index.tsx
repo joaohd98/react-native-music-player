@@ -24,7 +24,36 @@ export class PlayerSong extends React.Component<PlayerSongProp, PlayerSongState>
       this.playerSongAnimated.changeVisibilityPlayer(this.state.heightAnimation, this.props.isOpen)
     }
   }
-  
+
+  getMinimizedContent = () => {
+    const {
+      MinimizedContainer,
+      MinimizedImagePlaceholder,
+      MinimizedTextView,
+      MinimizedFirstText,
+      MinimizedSecondaryText,
+      MinimizedPlayPauseIcon,
+      MinimizedCloseIcon,
+      MinimizedIconTouchable
+    } = PlayerSongStyle
+
+    return (
+      <MinimizedContainer style={{opacity: this.state.isExpanded ? 0 : 1}}>
+        <MinimizedImagePlaceholder />
+        <MinimizedTextView>
+          <MinimizedFirstText>Name of content</MinimizedFirstText>
+          <MinimizedSecondaryText>Name of course</MinimizedSecondaryText>
+        </MinimizedTextView>
+        <MinimizedIconTouchable>
+          <MinimizedPlayPauseIcon widthIcon={30} heightIcon={30} />
+        </MinimizedIconTouchable>
+        <MinimizedIconTouchable>
+          <MinimizedCloseIcon widthIcon={30} heightIcon={30}  />
+        </MinimizedIconTouchable>
+      </MinimizedContainer>
+    )
+
+  }
 
   render() {
     const {Container} = PlayerSongStyle
@@ -35,7 +64,7 @@ export class PlayerSong extends React.Component<PlayerSongProp, PlayerSongState>
 
     return (
       <Container {...handler} style={styleContainer}>
-
+        {this.getMinimizedContent()}
       </Container>
     );
   }

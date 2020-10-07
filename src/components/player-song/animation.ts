@@ -9,11 +9,12 @@ export class PlayerSongAnimated {
 
   constructor(dragAnimation: Animated.Value, getExpanded: () => boolean, setExpanded: (value: boolean) => void,  height: number) {
     this.height = height
-    this.panResponder = this.getPanResponder(dragAnimation, getExpanded, setExpanded)
 
     dragAnimation.addListener((animation) => {
       this.panAnimationValue = animation.value
     })
+
+    this.panResponder = this.getPanResponder(dragAnimation, getExpanded, setExpanded)
   }
 
   private getPanResponder = (dragAnimation: Animated.Value, getExpanded: () => boolean, setExpanded: (value: boolean) => void) => {
@@ -35,27 +36,31 @@ export class PlayerSongAnimated {
         const isExpanded = getExpanded()
         const height = this.height
 
-        const toValue = isExpanded ? 0 : height
-        const toValueInverse = isExpanded ? height : 0
+        const toValue = isExpanded ? height : 0
+        const toValueInverse = isExpanded ? 0 : height
 
         if(this.panAnimationValue < 0 || this.panAnimationValue > height) {
           dragAnimation.setValue(toValueInverse)
         }
 
         else if(this.panAnimationValue <= 75 || this.panAnimationValue >= height - 75) {
-          Animated.spring(dragAnimation, {
+          Animated.timing(dragAnimation, {
             toValue: toValueInverse,
+            duration: 300,
             useNativeDriver: false
           }).start()
         }
 
         else {
-          Animated.spring(dragAnimation, {
-            toValue,
-            useNativeDriver: false
-          }).start()
+          console.log("setExap", isExpanded)
 
-          setExpanded(!isExpanded)
+          Animated.timing(dragAnimation, {
+            toValue,
+            duration: 300,
+            useNativeDriver: false
+          }).start(() => {
+            setExpanded(!isExpanded)
+          })
         }
       }
     })
