@@ -1,6 +1,6 @@
 import styled from "styled-components/native";
 import {Animated} from "react-native";
-import {ViewAnimatedProps} from "../../utils/animation-type";
+import {ImageAnimatedProps, ViewAnimatedProps} from "../../utils/animation-type";
 import {IconClose} from "../../../assets/images/icon-close";
 import {IconPlayColorFul} from "../../../assets/images/icon-play-colorful";
 import {IconRetry} from "../../../assets/images/icon-retry";
@@ -16,6 +16,17 @@ export const PlayerSongStyle = {
     position: absolute;
     bottom: 0;
     width: 100%;
+  `,
+  SongImage: styled(Animated.Image)<ImageAnimatedProps>`
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: ${contentSize};
+  `,
+  Video: styled(Animated.View)<ViewAnimatedProps>`
+    width: 100%;
+    height: 100%;
+    background-color: violet;
   `,
   MaximizedContainer: styled.View`
     position: absolute;
@@ -51,25 +62,21 @@ export const PlayerSongStyle = {
     opacity: 0.8;
     color: white;
   `,
-  MaximizedContentContainer: styled.View`
+  MaximizedVideoContainer: styled.View`
     width: 100%;
     height: ${contentSize};
     margin-vertical: ${PercentageScreen.getHeight(7.5)};
     justify-content: center;
   `,
-  MaximizedSongImage: styled.Image`
+  MaximizedSongContainer: styled.View`
     height: ${contentSize};
     width: ${contentSize};
     border-radius: ${contentSize};
-    border-width: 2px;
-    border-color: yellow;
+    margin-vertical: ${PercentageScreen.getHeight(7.5)};
     align-self: center;
+    border-radius: ${contentSize};
   `,
-  MaximizedVideo: styled.View`
-    width: 100%;
-    height: 100%;
-    background-color: violet;
-  `,
+
   MaximizedBottomAnimated: styled(Animated.View)<ViewAnimatedProps>``,
   MaximizedNameContainer: styled.View`
     margin-horizontal: 10%;

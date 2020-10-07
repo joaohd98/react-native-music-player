@@ -1,6 +1,7 @@
-import {Animated, PanResponder, PanResponderInstance, StyleProp, TextStyle, ViewStyle} from "react-native";
+import {Animated, ImageStyle, PanResponder, PanResponderInstance, StyleProp, TextStyle, ViewStyle} from "react-native";
 
 type AnimatedViewStyle = Animated.AnimatedProps<StyleProp<ViewStyle>>
+type AnimatedImageStyle = Animated.AnimatedProps<StyleProp<ImageStyle>>
 
 export class PlayerSongAnimated {
   private panResponder: PanResponderInstance
@@ -126,6 +127,24 @@ export class PlayerSongAnimated {
         outputRange: [1, 0],
         extrapolate: "clamp"
       })
+    }
+  }
+
+  getSongStyle = (imageSize: Animated.ValueXY, imagePosition: Animated.ValueXY): AnimatedImageStyle => {
+    return {
+      width: imageSize.x,
+      height: imageSize.y,
+      left: imagePosition.x,
+      top: imagePosition.y,
+    }
+  }
+
+  getVideoStyle = (imageSize: Animated.ValueXY, imagePosition: Animated.ValueXY): AnimatedViewStyle => {
+    return {
+      width: imageSize.x,
+      height: imageSize.y,
+      left: imagePosition.x,
+      top: imagePosition.y,
     }
   }
 }
