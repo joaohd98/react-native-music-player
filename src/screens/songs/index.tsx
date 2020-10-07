@@ -24,6 +24,10 @@ export class SongsScreen extends React.Component<{}, State> {
     isOpen: false
   }
 
+  componentDidMount() {
+    this.setState({isOpen: true})
+  }
+
   render() {
     return (
       <View style={{flex: 1, backgroundColor: CustomColors.backgroundColor}}>

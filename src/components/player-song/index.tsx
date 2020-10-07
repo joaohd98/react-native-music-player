@@ -25,6 +25,41 @@ export class PlayerSong extends React.Component<PlayerSongProp, PlayerSongState>
     }
   }
 
+  getMaximizedContent = () => {
+    const {
+      MaximizedContainer,
+      MaximizedTopView,
+      MaximizedIconTouchable,
+      MaximizedCollapseIcon,
+      MaximizedCloseIcon,
+      MaximizedTitleContent,
+      MaximizedTitleText,
+      MaximizedUnderlineText,
+    } = PlayerSongStyle
+
+    const style = this.playerSongAnimated.getMaximizedStyle(this.state.dragAnimation)
+
+    return (
+      <MaximizedContainer style={style}>
+        <MaximizedTopView>
+          <MaximizedIconTouchable>
+            <MaximizedCollapseIcon widthIcon={30} heightIcon={30}/>
+          </MaximizedIconTouchable>
+          <MaximizedIconTouchable>
+            <MaximizedCloseIcon widthIcon={30} heightIcon={30} />
+          </MaximizedIconTouchable>
+        </MaximizedTopView>
+        <MaximizedTitleContent>
+          <MaximizedTitleText>
+            FASE 1 - DEVELOPMENT ENVIRONMENT
+          </MaximizedTitleText>
+          <MaximizedUnderlineText />
+        </MaximizedTitleContent>
+      </MaximizedContainer>
+    )
+
+  }
+
   getMinimizedContent = () => {
     const {
       MinimizedContainer,
@@ -66,7 +101,8 @@ export class PlayerSong extends React.Component<PlayerSongProp, PlayerSongState>
 
     return (
       <Container {...handler} style={styleContainer}>
-        {this.getMinimizedContent()}
+        { this.getMaximizedContent() }
+        { this.getMinimizedContent() }
       </Container>
     );
   }
